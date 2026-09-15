@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bradstone — Clickable Prototype</title>
+<style>
+  html,body{margin:0;padding:0;height:100%;background:#fff;}
+  #stage{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;}
+</style>
+</head>
+<body>
+<iframe id="stage" title="Bradstone prototype"></iframe>
+
+<script type="text/html" id="p:andover-infilta"><!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andover Infilta – Permeable Aqua-Etched Block Paving</title>
+
+<!-- Bradstone's real Adobe Typekit kit: ivypresto-display (serif headings) + halyard-text (sans body/UI) -->
+<link rel="stylesheet" href="https://use.typekit.net/kjz6hbv.css">
+
+<style>
+  :root{
+    --charcoal:#524D56;      /* body text / headings */
+    --green:#005209;         /* brand CTA green */
+    --dark:#29272B;          /* top strip + footer */
+    --border:#D4D3D5;        /* light grey border */
+    --line:#E6E5E7;          /* hairline dividers */
+    --white:#ffffff;
+    --sans:"halyard-text",-apple-system,"Segoe UI",Arial,sans-serif;
+    --serif:"ivypresto-display",Georgia,"Times New Roman",serif;
+    --maxw:1776px;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:24px;
+    color:var(--charcoal);
+    background:var(--white);
+  }
+  a{color:var(--charcoal);text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 12px;}
+
+  /* ===================== TOP DARK STRIP ===================== */
+  .topbar{background:var(--dark);color:#cfced1;}
+  .topbar .wrap{display:flex;align-items:stretch;justify-content:space-between;height:36px;}
+  .topbar-tabs{display:flex;height:100%;}
+  .topbar-tabs a{
+    display:flex;align-items:center;padding:0 20px;height:100%;
+    font-size:11px;letter-spacing:.06em;color:#b7b6ba;text-transform:uppercase;
+  }
+  .topbar-tabs a.active{background:#3a383d;color:#fff;}
+  .topbar-social{display:flex;align-items:center;gap:18px;padding-right:2px;}
+  .topbar-social a{color:#b7b6ba;display:flex;}
+  .topbar-social svg{width:15px;height:15px;fill:currentColor;}
+
+  /* ===================== MAIN NAV ===================== */
+  .mainnav{border-bottom:1px solid var(--line);background:#fff;}
+  .mainnav .wrap{display:flex;align-items:center;gap:28px;height:104px;}
+  .logo img{height:34px;width:auto;}
+  .primary-links{display:flex;align-items:center;gap:30px;margin-left:8px;}
+  .primary-links a{font-size:18px;color:var(--charcoal);display:flex;align-items:center;gap:8px;}
+  .primary-links a .caret{width:9px;height:9px;border-right:2px solid #8f8b92;border-bottom:2px solid #8f8b92;transform:rotate(45deg);margin-top:-4px;}
+
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:28px;}
+
+  .search{
+    display:flex;align-items:center;gap:10px;
+    border:1px solid var(--border);border-radius:80px;
+    padding:11px 22px;min-width:230px;color:#8f8b92;
+  }
+  .search input{border:0;outline:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--charcoal);width:100%;}
+  .search input::placeholder{color:#9a969d;}
+  .search svg{width:18px;height:18px;stroke:#8f8b92;fill:none;stroke-width:2;flex:none;}
+
+  .phone{font-size:20px;font-weight:500;color:var(--charcoal);white-space:nowrap;}
+
+  /* utility icon items (Free Brochure / Quote / Sample) */
+  .utils{display:flex;align-items:flex-start;gap:26px;}
+  .util{
+    display:flex;flex-direction:column;align-items:center;gap:7px;
+    text-align:center;color:var(--charcoal);width:74px;
+  }
+  .util .ico{height:26px;display:flex;align-items:center;justify-content:center;}
+  .util .ico svg,.util .ico img{height:26px;width:auto;}
+  .util .ico svg{stroke:var(--charcoal);fill:none;stroke-width:1.4;}
+  .util span{font-size:13px;line-height:15px;}
+
+  /* ===================== BREADCRUMB ===================== */
+  .crumbs{padding:22px 0 4px;font-size:14px;color:#8f8b92;display:flex;align-items:center;gap:10px;}
+  .crumbs a{color:#8f8b92;}
+  .crumbs .sep{width:6px;height:6px;border-right:1.5px solid #b6b3b8;border-top:1.5px solid #b6b3b8;transform:rotate(45deg);}
+  .crumbs .here{color:var(--charcoal);font-weight:500;}
+
+  /* ===================== PRODUCT HERO ===================== */
+  .product{display:flex;align-items:flex-start;gap:clamp(32px,8.5vw,163px);padding:10px 0 60px;}
+
+  .gallery{flex:1 1 auto;min-width:0;max-width:876px;display:grid;grid-template-columns:74px 1fr;gap:18px;}
+  .info{flex:0 0 600px;max-width:600px;}
+  .thumbs{display:flex;flex-direction:column;gap:14px;}
+  .thumb{border-radius:10px;overflow:hidden;aspect-ratio:1;background:#f3f2f1;cursor:pointer;}
+  .thumb.sel{box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--green);}
+  .thumb img{width:100%;height:100%;object-fit:cover;}
+  .hero-img{border-radius:10px;overflow:hidden;background:#f3f2f1;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  .info h1{
+    font-family:var(--serif);font-weight:400;font-size:48px;line-height:52.8px;
+    color:var(--charcoal);margin:4px 0 22px;
+  }
+  .info p.lead{font-size:16px;line-height:24px;color:var(--charcoal);margin:0 0 30px;max-width:60ch;}
+
+  .divider{height:1px;background:var(--line);margin:6px 0 26px;}
+
+  .swatch-label{font-size:16px;color:var(--charcoal);margin:0 0 16px;}
+  .swatches{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
+  .swatch{width:48px;height:48px;border-radius:10px;cursor:pointer;}
+  .swatch.sel{box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--green);}
+
+  /* --- the two CTAs (split from the original single button) --- */
+  .cta-row{display:flex;gap:16px;margin-bottom:36px;}
+  .btn{
+    flex:1;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--sans);font-size:18px;font-weight:400;line-height:1;
+    padding:19px 28px;border-radius:80px;cursor:pointer;
+    border:1.5px solid var(--green);transition:background-color .18s ease,color .18s ease;
+    text-align:center;
+  }
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-primary:hover{background:#00400a;border-color:#00400a;}
+  .btn-outline{background:transparent;color:var(--green);}
+  .btn-outline:hover{background:var(--green);color:#fff;}
+  .btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;}
+
+  .advisor{display:flex;align-items:flex-start;gap:16px;color:var(--charcoal);font-size:16px;line-height:24px;}
+  .advisor .aico{flex:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;}
+  .advisor .aico svg{width:36px;height:36px;}
+  .advisor a{color:var(--green);font-weight:600;}
+
+  /* NBS + Causeway spec links */
+  .spec-links{display:flex;flex-direction:column;gap:14px;margin-top:26px;}
+  .spec-link{display:flex;align-items:center;gap:20px;border-radius:16px;padding:10px 20px;min-height:65px;box-sizing:border-box;text-decoration:none;}
+  .spec-link.nbs{background:rgba(87,47,99,.1);}
+  .spec-link.cause{background:#fff;border:1px solid #40A5D9;}
+  .spec-logo{flex:none;width:112px;display:flex;align-items:center;}
+  .spec-arrow{flex:none;display:flex;}
+  .spec-arrow svg{width:24px;height:25px;}
+  .spec-text{font-size:16px;font-weight:600;color:var(--charcoal);}
+  /* NBS mark */
+  .nbs-mark{display:inline-flex;align-items:center;gap:8px;}
+  .nbs-mark svg{width:22px;height:22px;}
+  .nbs-mark b{font-size:16px;font-weight:700;color:#3d2b42;letter-spacing:.02em;}
+  /* Causeway mark */
+  .cw-mark{display:inline-flex;align-items:center;gap:7px;}
+  .cw-mark svg{width:22px;height:22px;}
+  .cw-mark .cw-txt{display:flex;flex-direction:column;line-height:1.05;}
+  .cw-mark .cw-txt .c1{font-size:14px;font-weight:700;color:#232f45;}
+  .cw-mark .cw-txt .c2{font-size:11px;font-weight:600;color:#40A5D9;}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:1080px){
+    .primary-links{display:none;}
+    .mainnav .wrap{height:88px;gap:18px;}
+  }
+  @media (max-width:900px){
+    .product{flex-direction:column;gap:30px;}
+    .gallery{max-width:none;grid-template-columns:64px 1fr;}
+    .info{flex-basis:auto;max-width:560px;width:100%;}
+    .info h1{font-size:38px;line-height:42px;}
+    .nav-right{gap:16px;}
+    .search{display:none;}
+    .cta-row{flex-direction:column;}
+    .topbar-tabs a{padding:0 12px;font-size:10px;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px;}
+    .info h1{font-size:32px;line-height:36px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ TOP DARK STRIP ============ -->
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="topbar-tabs">
+        <a href="#">Bradstone</a>
+        <a href="#">Bradstone Homeowner</a>
+        <a href="#" class="active">Bradstone Commercial</a>
+      </nav>
+      <div class="topbar-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.47-4.05 4.17v2.33H7.8V13h2.7v8h3z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a2.6 2.6 0 0 0-1.8-1.85C18.6 6 12 6 12 6s-6.6 0-8.2.35A2.6 2.6 0 0 0 2 8.2 27 27 0 0 0 1.75 12 27 27 0 0 0 2 15.8a2.6 2.6 0 0 0 1.8 1.85C5.4 18 12 18 12 18s6.6 0 8.2-.35A2.6 2.6 0 0 0 22 15.8 27 27 0 0 0 22.25 12 27 27 0 0 0 22 8.2zM10 14.6V9.4l4.4 2.6z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.6c2.4 0 2.68.01 3.63.05.88.04 1.35.19 1.66.31.42.16.72.36 1.03.67.31.31.51.61.67 1.03.12.31.27.78.31 1.66.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.04.88-.19 1.35-.31 1.66-.16.42-.36.72-.67 1.03-.31.31-.61.51-1.03.67-.31.12-.78.27-1.66.31-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-.88-.04-1.35-.19-1.66-.31a2.78 2.78 0 0 1-1.03-.67 2.78 2.78 0 0 1-.67-1.03c-.12-.31-.27-.78-.31-1.66C4.61 14.68 4.6 14.4 4.6 12s.01-2.68.05-3.63c.04-.88.19-1.35.31-1.66.16-.42.36-.72.67-1.03.31-.31.61-.51 1.03-.67.31-.12.78-.27 1.66-.31C9.32 4.61 9.6 4.6 12 4.6M12 3c-2.44 0-2.75.01-3.71.05-.96.04-1.61.2-2.18.42-.6.23-1.1.54-1.6 1.04-.5.5-.81 1-.1.04 1.6-.22.57-.38 1.22-.42 2.18C3 9.25 3 9.56 3 12s.01 2.75.05 3.71c.04.96.2 1.61.42 2.18.23.6.54 1.1 1.04 1.6.5.5 1 .81 1.6 1.04.57.22 1.22.38 2.18.42.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c.96-.04 1.61-.2 2.18-.42.6-.23 1.1-.54 1.6-1.04.5-.5.81-1 1.04-1.6.22-.57.38-1.22.42-2.18.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.04-.96-.2-1.61-.42-2.18a4.3 4.3 0 0 0-1.04-1.6 4.3 4.3 0 0 0-1.6-1.04c-.57-.22-1.22-.38-2.18-.42C14.75 3 14.44 3 12 3zm0 4.38A4.62 4.62 0 1 0 16.62 12 4.62 4.62 0 0 0 12 7.38zm0 7.62A3 3 0 1 1 15 12a3 3 0 0 1-3 3zm4.8-8.87a1.08 1.08 0 1 0 1.08 1.08 1.08 1.08 0 0 0-1.08-1.08z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MAIN NAV ============ -->
+  <header class="mainnav">
+    <div class="wrap">
+      <a class="logo" href="andover-infilta.html" aria-label="Bradstone Commercial">
+        <img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone">
+      </a>
+
+      <nav class="primary-links">
+        <a href="#">Solutions <i class="caret"></i></a>
+        <a href="#">Case Studies</a>
+        <a href="#">News &amp; Resources <i class="caret"></i></a>
+        <a href="#">Contact Us</a>
+      </nav>
+
+      <div class="nav-right">
+        <div class="search">
+          <input type="text" placeholder="How can we help?" aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+        </div>
+
+        <a class="phone" href="tel:01335372222">01335 372222</a>
+
+        <div class="utils">
+          <!-- Free Brochure (unchanged) -->
+          <a class="util" href="#" title="Free Brochure">
+            <span class="ico"><img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/icons/icon-free-brochure.svg" alt=""></span>
+            <span>Free Brochure</span>
+          </a>
+
+          <!-- ===== CHANGE 1: "Quotes & Samples" split into two items ===== -->
+          <a class="util" href="quote-cart.html" title="Quote">
+            <span class="ico">
+              <!-- quote / document line icon in Bradstone's thin-line style -->
+              <svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><line x1="9.5" y1="12" x2="15" y2="12"/><line x1="9.5" y1="15.5" x2="15" y2="15.5"/></svg>
+            </span>
+            <span>Quote</span>
+          </a>
+
+          <a class="util" href="sample-cart.html" title="Sample">
+            <span class="ico">
+              <!-- sample / paving-swatch tile icon -->
+              <svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
+            </span>
+            <span>Sample</span>
+          </a>
+          <!-- ===== end change 1 ===== -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ BREADCRUMB ============ -->
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="#">Home</a>
+      <i class="sep"></i>
+      <span class="here">ANDOVER® INFILTA</span>
+    </div>
+  </div>
+
+  <!-- ============ PRODUCT HERO ============ -->
+  <main class="wrap">
+    <section class="product">
+
+      <!-- LEFT: gallery -->
+      <div class="gallery">
+        <div class="thumbs">
+          <div class="thumb sel"><img src="https://www.bradstone.com/media/catalog/product/s/t/stonefleck_infilta_2.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=140&width=140&canvas=140:140" alt="View 1"></div>
+          <div class="thumb"><img src="https://www.bradstone.com/media/catalog/product/s/t/stonefleck_infilta_2.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=140&width=140&canvas=140:140" alt="View 2"></div>
+          <div class="thumb"><img src="https://www.bradstone.com/media/catalog/product/s/t/stonefleck_infilta_2.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=140&width=140&canvas=140:140" alt="View 3"></div>
+        </div>
+        <div class="hero-img">
+          <img src="https://www.bradstone.com/media/catalog/product/s/t/stonefleck_infilta_2.jpg?quality=80&bg-color=255,255,255&height=860&width=876&canvas=876:860" alt="Andover Infilta permeable paving">
+        </div>
+      </div>
+
+      <!-- RIGHT: info -->
+      <div class="info">
+        <h1>ANDOVER® INFILTA</h1>
+        <p class="lead">Andover® Infilta is a permeable paving range designed to combine contemporary aesthetics with the functional benefits of SuDS-compatible construction. Manufactured in the UK using a semi-dry process and finished with Bradstone’s Aqua Etching technology, it delivers a lightly textured, high-quality surface suitable for modern public realm schemes. Fully compliant with BS EN 1339 and BS EN 1338, Andover® Infilta offers long-lasting performance across pedestrian spaces and areas subject to occasional vehicular overrun.</p>
+
+        <div class="divider"></div>
+
+        <p class="swatch-label">Colour Options:</p>
+        <div class="swatches">
+          <span class="swatch sel" style="background:#3f3d42"></span>
+          <span class="swatch" style="background:#9a9186"></span>
+          <span class="swatch" style="background:#b6afa8"></span>
+          <span class="swatch" style="background:#cfc9c2"></span>
+          <span class="swatch" style="background:#c69a7e"></span>
+          <span class="swatch" style="background:#dcd6cf"></span>
+          <span class="swatch" style="background:#b06a5a"></span>
+        </div>
+
+        <!-- ===== CHANGE 2: single "Request a quote & sample" split into two buttons ===== -->
+        <div class="cta-row">
+          <!-- primary stays exactly as it was -->
+          <a class="btn btn-primary" href="quote-cart.html">Request a quote</a>
+          <!-- new outlined button -->
+          <a class="btn btn-outline" href="sample-cart.html">Order sample</a>
+        </div>
+        <!-- ===== end change 2 ===== -->
+
+        <div class="advisor">
+          <span class="aico"><svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M31.5 28.125V29.25C31.5 30.4435 31.0259 31.5881 30.182 32.432C29.3381 33.2759 28.1935 33.75 27 33.75H19.125" stroke="#005209" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M31.5 18H27C26.4033 18 25.831 18.2371 25.409 18.659C24.9871 19.081 24.75 19.6533 24.75 20.25V25.875C24.75 26.4717 24.9871 27.044 25.409 27.466C25.831 27.8879 26.4033 28.125 27 28.125H31.5V18ZM31.5 18C31.5 16.2272 31.1508 14.4717 30.4724 12.8338C29.7939 11.1959 28.7995 9.70765 27.5459 8.45406C26.2923 7.20047 24.8041 6.20606 23.1662 5.52763C21.5283 4.84919 19.7728 4.5 18 4.5C16.2272 4.5 14.4717 4.84919 12.8338 5.52763C11.1959 6.20606 9.70765 7.20047 8.45406 8.45406C7.20047 9.70765 6.20606 11.1959 5.52763 12.8338C4.84919 14.4717 4.5 16.2272 4.5 18M4.5 18V25.875C4.5 26.4717 4.73705 27.044 5.15901 27.466C5.58097 27.8879 6.15326 28.125 6.75 28.125H9C9.59674 28.125 10.169 27.8879 10.591 27.466C11.0129 27.044 11.25 26.4717 11.25 25.875V20.25C11.25 19.6533 11.0129 19.081 10.591 18.659C10.169 18.2371 9.59674 18 9 18H4.5Z" stroke="#005209" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg></span>
+          <div>If you require assistance, please don't hesitate to reach out. Contact your dedicated Bradstone Advisor on <a href="tel:01335372222">01335 372222</a></div>
+        </div>
+
+        <!-- ===== NBS + Causeway, below the assistance info (as on the live page) ===== -->
+        <div class="spec-links">
+          <a class="spec-link nbs" href="#">
+            <span class="spec-logo">
+              <span class="nbs-mark">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12 L23 12 L17.5 21.526 Z" fill="#5C2D63"/>
+                  <path d="M12 12 L17.5 21.526 L6.5 21.526 Z" fill="#8E4E9E"/>
+                  <path d="M12 12 L6.5 21.526 L1 12 Z" fill="#5C2D63"/>
+                  <path d="M12 12 L1 12 L6.5 2.474 Z" fill="#8E4E9E"/>
+                  <path d="M12 12 L6.5 2.474 L17.5 2.474 Z" fill="#5C2D63"/>
+                  <path d="M12 12 L17.5 2.474 L23 12 Z" fill="#8E4E9E"/>
+                </svg>
+                <b>NBS</b>
+              </span>
+            </span>
+            <span class="spec-arrow"><svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 5L21 12.5M21 12.5L13.5 20M21 12.5H3" stroke="#29272B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="spec-text">See full NBS product specification</span>
+          </a>
+
+          <a class="spec-link cause" href="#">
+            <span class="spec-logo">
+              <span class="cw-mark">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="5" r="2.4" fill="#E24E8C"/>
+                  <circle cx="18" cy="8.5" r="2.4" fill="#F5A03C"/>
+                  <circle cx="18" cy="15.5" r="2.4" fill="#6FBE4A"/>
+                  <circle cx="12" cy="19" r="2.4" fill="#33A0DC"/>
+                  <circle cx="6" cy="15.5" r="2.4" fill="#9B59B6"/>
+                  <circle cx="6" cy="8.5" r="2.4" fill="#F2C94C"/>
+                  <circle cx="12" cy="12" r="2.4" fill="#B0B4BC"/>
+                </svg>
+                <span class="cw-txt"><span class="c1">Causeway</span><span class="c2">SpecifiedBy</span></span>
+              </span>
+            </span>
+            <span class="spec-arrow"><svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 5L21 12.5M21 12.5L13.5 20M21 12.5H3" stroke="#29272B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="spec-text">View on SpecifiedBy and add to spec</span>
+          </a>
+        </div>
+        <!-- ===== end NBS + Causeway ===== -->
+      </div>
+
+    </section>
+  </main>
+
+</body>
+</html>
+</script>
+<script type="text/html" id="p:quote-cart"><!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quote Cart – Bradstone Commercial</title>
+
+<!-- Bradstone's real Adobe Typekit kit: ivypresto-display (serif headings) + halyard-text (sans body/UI) -->
+<link rel="stylesheet" href="https://use.typekit.net/kjz6hbv.css">
+
+<style>
+  :root{
+    --charcoal:#524D56;
+    --green:#005209;
+    --dark:#29272B;
+    --border:#D4D3D5;
+    --line:#E6E5E7;
+    --white:#ffffff;
+    --sans:"halyard-text",-apple-system,"Segoe UI",Arial,sans-serif;
+    --serif:"ivypresto-display",Georgia,"Times New Roman",serif;
+    --maxw:1776px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:var(--sans);font-size:16px;line-height:24px;color:var(--charcoal);background:var(--white);}
+  a{color:var(--charcoal);text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 12px;}
+
+  /* ===================== TOP DARK STRIP ===================== */
+  .topbar{background:var(--dark);color:#cfced1;}
+  .topbar .wrap{display:flex;align-items:stretch;justify-content:space-between;height:36px;}
+  .topbar-tabs{display:flex;height:100%;}
+  .topbar-tabs a{display:flex;align-items:center;padding:0 20px;height:100%;font-size:11px;letter-spacing:.06em;color:#b7b6ba;text-transform:uppercase;}
+  .topbar-tabs a.active{background:#3a383d;color:#fff;}
+  .topbar-social{display:flex;align-items:center;gap:18px;padding-right:2px;}
+  .topbar-social a{color:#b7b6ba;display:flex;}
+  .topbar-social svg{width:15px;height:15px;fill:currentColor;}
+
+  /* ===================== MAIN NAV ===================== */
+  .mainnav{border-bottom:1px solid var(--line);background:#fff;}
+  .mainnav .wrap{display:flex;align-items:center;gap:28px;height:104px;}
+  .logo img{height:34px;width:auto;}
+  .primary-links{display:flex;align-items:center;gap:30px;margin-left:8px;}
+  .primary-links a{font-size:18px;color:var(--charcoal);display:flex;align-items:center;gap:8px;}
+  .primary-links a .caret{width:9px;height:9px;border-right:2px solid #8f8b92;border-bottom:2px solid #8f8b92;transform:rotate(45deg);margin-top:-4px;}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:28px;}
+  .search{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:80px;padding:11px 22px;min-width:230px;color:#8f8b92;}
+  .search input{border:0;outline:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--charcoal);width:100%;}
+  .search input::placeholder{color:#9a969d;}
+  .search svg{width:18px;height:18px;stroke:#8f8b92;fill:none;stroke-width:2;flex:none;}
+  .phone{font-size:20px;font-weight:500;color:var(--charcoal);white-space:nowrap;}
+  .utils{display:flex;align-items:flex-start;gap:26px;}
+  .util{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;color:var(--charcoal);width:74px;}
+  .util .ico{height:26px;display:flex;align-items:center;justify-content:center;}
+  .util .ico svg,.util .ico img{height:26px;width:auto;}
+  .util .ico svg{stroke:var(--charcoal);fill:none;stroke-width:1.4;}
+  .util span{font-size:13px;line-height:15px;}
+
+  /* ===================== QUOTE CART ===================== */
+  .qc{padding-top:34px;padding-bottom:72px;}
+  .qc-title{font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.1;color:var(--charcoal);margin:8px 0 44px;}
+  .qc-title .g{color:var(--green);font-weight:700;}
+  .qc-body{display:flex;align-items:flex-start;gap:clamp(40px,7vw,120px);}
+
+  /* left: cart */
+  .qc-cart{flex:0 1 600px;min-width:0;}
+  .qc-cart .col-head{font-size:16px;font-weight:700;color:var(--charcoal);padding-bottom:16px;border-bottom:1px solid #cfcdd1;}
+  .qc-item{display:flex;gap:30px;padding:30px 0;border-bottom:1px solid #cfcdd1;}
+  .qc-thumb{flex:none;width:120px;height:152px;border-radius:6px;overflow:hidden;background:#efeef0;display:flex;align-items:center;justify-content:center;}
+  .qc-thumb img{width:100%;height:100%;object-fit:cover;}
+  .qc-thumb svg{width:56px;height:64px;stroke:#b7b3bb;fill:none;stroke-width:1.4;}
+  .qc-meta .name{font-size:24px;color:var(--charcoal);margin:2px 0 16px;font-weight:400;}
+  .qc-meta .attr{font-size:16px;color:var(--charcoal);margin:0 0 7px;}
+  .qc-meta .attr b{font-weight:700;}
+  .qc-meta .add-note{display:inline-block;margin-top:8px;color:#2e7dd1;font-size:16px;font-weight:500;}
+  .qc-meta .add-note:hover{text-decoration:underline;}
+
+  /* right: form panel — styled to match the live quotes form; widened to the page margin */
+  .qc-form{flex:1 1 auto;min-width:0;max-width:none;background:#F4F4F5;border-radius:16px;padding:44px 56px;}
+  .qc-form h3{font-size:20px;font-weight:500;color:var(--charcoal);margin:0 0 22px;}
+  .qc-form h3.mt{margin-top:36px;}
+  .field{margin-bottom:18px;}
+  .field-row{display:flex;gap:20px;}
+  .field-row .field{flex:1;min-width:0;}
+  .field label{display:block;font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:8px;}
+  .field label .req{color:#e02b2b;}
+  .field input,.field textarea{width:100%;background:#fff;border:1px solid var(--border);border-radius:16px;padding:13px 20px;font-family:var(--sans);font-size:16px;color:var(--charcoal);outline:none;transition:border-color .15s ease;}
+  .field textarea{min-height:120px;resize:vertical;line-height:22px;}
+  .field input:focus,.field textarea:focus{border-color:var(--green);}
+  .qc-submit{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;background:var(--green);color:#fff;border:0;border-radius:80px;padding:15px 26px;font-family:var(--sans);font-size:16px;font-weight:500;cursor:pointer;margin-top:20px;transition:background-color .18s ease;}
+  .qc-submit:hover{background:#00400a;}
+  .qc-submit svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8;}
+
+  /* ===================== FOOTER ===================== */
+  .site-footer{background:#F4F8F0;margin-top:24px;}
+  .footer-main{display:flex;gap:60px;padding:56px 0 48px;flex-wrap:wrap;}
+  .footer-left{flex:1 1 520px;min-width:300px;}
+  .footer-logo{opacity:.5;margin-bottom:26px;}
+  .footer-logo img{height:30px;}
+  .news-card{background:#fff;border-radius:16px;padding:24px 32px;max-width:570px;text-align:center;}
+  .news-card h3{font-size:30px;font-weight:600;color:var(--charcoal);margin:6px 0 12px;}
+  .news-card h3 .g{color:#669CEE;}
+  .news-card .news-sub{font-size:16px;color:var(--charcoal);margin:0 0 22px;}
+  .news-form{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:80px;background:#fff;padding:6px 6px 6px 10px;}
+  .news-form input{flex:1;border:0;outline:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--charcoal);padding:10px 14px;}
+  .news-form input::placeholder{color:#9a969d;}
+  .subscribe{display:inline-flex;align-items:center;gap:12px;background:var(--charcoal);color:#fff;border:0;border-radius:80px;padding:13px 24px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .subscribe svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.6;}
+  .footer-cols{display:flex;gap:56px;flex:1 1 620px;flex-wrap:wrap;padding-top:6px;}
+  .fcol h4{font-size:18px;font-weight:700;color:var(--green);text-transform:uppercase;margin:0 0 20px;letter-spacing:.02em;}
+  .fcol a{display:block;font-size:16px;color:var(--charcoal);margin-bottom:14px;}
+  .fcol a:hover{text-decoration:underline;}
+  .footer-bottom{background:#D1E0C2;}
+  .footer-bottom .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0;flex-wrap:wrap;}
+  .fb-copy{font-size:15px;color:var(--charcoal);}
+  .fb-legal{display:flex;gap:26px;flex-wrap:wrap;}
+  .fb-legal a{font-size:15px;color:var(--charcoal);}
+  .fb-legal a:hover{text-decoration:underline;}
+  .fb-social{display:flex;gap:16px;}
+  .fb-social a{color:var(--charcoal);display:flex;}
+  .fb-social svg{width:16px;height:16px;fill:currentColor;}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:1080px){
+    .primary-links{display:none;}
+    .mainnav .wrap{height:88px;gap:18px;}
+  }
+  @media (max-width:900px){
+    .qc-body{flex-direction:column;gap:36px;}
+    .qc-cart{max-width:none;width:100%;}
+    .qc-form{flex-basis:auto;max-width:none;width:100%;}
+    .qc-title{font-size:44px;}
+    .nav-right{gap:16px;}
+    .search{display:none;}
+    .topbar-tabs a{padding:0 12px;font-size:10px;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px;}
+    .qc-title{font-size:36px;}
+    .qc-form{padding:28px 22px;}
+    .qc-item{gap:18px;}
+    .field-row{flex-direction:column;gap:0;}
+    .footer-main{gap:32px;padding:40px 0 32px;}
+    .footer-cols{gap:32px;}
+    .footer-bottom .wrap{flex-direction:column;align-items:flex-start;gap:12px;}
+    .news-card{padding:20px;}
+    .news-card h3{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ TOP DARK STRIP ============ -->
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="topbar-tabs">
+        <a href="#">Bradstone</a>
+        <a href="#">Bradstone Homeowner</a>
+        <a href="#" class="active">Bradstone Commercial</a>
+      </nav>
+      <div class="topbar-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.47-4.05 4.17v2.33H7.8V13h2.7v8h3z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a2.6 2.6 0 0 0-1.8-1.85C18.6 6 12 6 12 6s-6.6 0-8.2.35A2.6 2.6 0 0 0 2 8.2 27 27 0 0 0 1.75 12 27 27 0 0 0 2 15.8a2.6 2.6 0 0 0 1.8 1.85C5.4 18 12 18 12 18s6.6 0 8.2-.35A2.6 2.6 0 0 0 22 15.8 27 27 0 0 0 22.25 12 27 27 0 0 0 22 8.2zM10 14.6V9.4l4.4 2.6z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.6c2.4 0 2.68.01 3.63.05.88.04 1.35.19 1.66.31.42.16.72.36 1.03.67.31.31.51.61.67 1.03.12.31.27.78.31 1.66.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.04.88-.19 1.35-.31 1.66-.16.42-.36.72-.67 1.03-.31.31-.61.51-1.03.67-.31.12-.78.27-1.66.31-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-.88-.04-1.35-.19-1.66-.31a2.78 2.78 0 0 1-1.03-.67 2.78 2.78 0 0 1-.67-1.03c-.12-.31-.27-.78-.31-1.66C4.61 14.68 4.6 14.4 4.6 12s.01-2.68.05-3.63c.04-.88.19-1.35.31-1.66.16-.42.36-.72.67-1.03.31-.31.61-.51 1.03-.67.31-.12.78-.27 1.66-.31C9.32 4.61 9.6 4.6 12 4.6M12 3c-2.44 0-2.75.01-3.71.05-.96.04-1.61.2-2.18.42-.6.23-1.1.54-1.6 1.04-.5.5-.81 1-1.04 1.6-.22.57-.38 1.22-.42 2.18C3 9.25 3 9.56 3 12s.01 2.75.05 3.71c.04.96.2 1.61.42 2.18.23.6.54 1.1 1.04 1.6.5.5 1 .81 1.6 1.04.57.22 1.22.38 2.18.42.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c.96-.04 1.61-.2 2.18-.42.6-.23 1.1-.54 1.6-1.04.5-.5.81-1 1.04-1.6.22-.57.38-1.22.42-2.18.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.04-.96-.2-1.61-.42-2.18a4.3 4.3 0 0 0-1.04-1.6 4.3 4.3 0 0 0-1.6-1.04c-.57-.22-1.22-.38-2.18-.42C14.75 3 14.44 3 12 3zm0 4.38A4.62 4.62 0 1 0 16.62 12 4.62 4.62 0 0 0 12 7.38zm0 7.62A3 3 0 1 1 15 12a3 3 0 0 1-3 3zm4.8-8.87a1.08 1.08 0 1 0 1.08 1.08 1.08 1.08 0 0 0-1.08-1.08z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MAIN NAV ============ -->
+  <header class="mainnav">
+    <div class="wrap">
+      <a class="logo" href="andover-infilta.html" aria-label="Bradstone Commercial">
+        <img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone">
+      </a>
+      <nav class="primary-links">
+        <a href="#">Solutions <i class="caret"></i></a>
+        <a href="#">Case Studies</a>
+        <a href="#">News &amp; Resources <i class="caret"></i></a>
+        <a href="#">Contact Us</a>
+      </nav>
+      <div class="nav-right">
+        <div class="search">
+          <input type="text" placeholder="How can we help?" aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+        </div>
+        <a class="phone" href="tel:01335372222">01335 372222</a>
+        <div class="utils">
+          <a class="util" href="#" title="Free Brochure">
+            <span class="ico"><img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/icons/icon-free-brochure.svg" alt=""></span>
+            <span>Free Brochure</span>
+          </a>
+          <a class="util" href="quote-cart.html" title="Quote">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><line x1="9.5" y1="12" x2="15" y2="12"/><line x1="9.5" y1="15.5" x2="15" y2="15.5"/></svg></span>
+            <span>Quote</span>
+          </a>
+          <a class="util" href="sample-cart.html" title="Sample">
+            <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span>
+            <span>Sample</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ QUOTE CART ============ -->
+  <main class="wrap qc">
+    <h1 class="qc-title">Quote <span class="g">Cart</span></h1>
+
+    <div class="qc-body">
+
+      <!-- LEFT: cart items -->
+      <section class="qc-cart">
+        <div class="col-head">Item</div>
+
+        <div class="qc-item">
+          <div class="qc-thumb">
+            <img src="https://www.bradstone.com/media/catalog/product/s/t/stonefleck_infilta_2.jpg?quality=80&bg-color=255,255,255&fit=bounds&width=300&height=380&canvas=300:380" alt="Andover Infilta">
+          </div>
+          <div class="qc-meta">
+            <p class="name">ANDOVER&reg; INFILTA</p>
+            <p class="attr"><b>Colour:</b> Anthracite Charcoal</p>
+            <a class="add-note" href="#">Add Note</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: quote form (styled like the live quotes form) -->
+      <section class="qc-form">
+        <form id="quoteForm" novalidate>
+        <h3>Your Information</h3>
+        <div class="field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" required>
+          </div>
+          <div class="field">
+            <label>Contact Number <span class="req">*</span></label>
+            <input type="tel" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Profession</label>
+            <input type="text">
+          </div>
+          <div class="field">
+            <label>Company Name <span class="req">*</span></label>
+            <input type="text" required>
+          </div>
+        </div>
+
+        <h3 class="mt">Project Details</h3>
+        <div class="field">
+          <label>Project Name <span class="req">*</span></label>
+          <input type="text" required>
+        </div>
+        <div class="field">
+          <label>Project Address Line 1 <span class="req">*</span></label>
+          <input type="text" required>
+        </div>
+        <div class="field">
+          <label>Project Address Line 2</label>
+          <input type="text">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Project Town <span class="req">*</span></label>
+            <input type="text" required>
+          </div>
+          <div class="field">
+            <label>Project Postcode <span class="req">*</span></label>
+            <input type="text" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Project Details <span class="req">*</span></label>
+          <textarea required></textarea>
+        </div>
+
+        <button class="qc-submit" type="submit">Submit Quote <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-main">
+      <div class="footer-left">
+        <div class="footer-logo"><img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone"></div>
+        <div class="news-card">
+          <h3>Build <span class="g">GREAT</span> Outdoors</h3>
+          <p class="news-sub">Sign up to our newsletter for the latest product info and updates.</p>
+          <div class="news-form">
+            <input type="email" placeholder="Enter your email address" aria-label="Email address">
+            <button class="subscribe">Subscribe <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Information</h4>
+          <a href="#">About Us</a>
+          <a href="#">Ethical Policy</a>
+          <a href="#">Bradstone Homeowner</a>
+          <a href="#">Bradstone Assured</a>
+        </div>
+        <div class="fcol">
+          <h4>Solutions</h4>
+          <a href="#">Concrete Flags &amp; Blocks</a>
+          <a href="#">British Standard Flag &amp; Kerb</a>
+          <a href="#">Active Travel</a>
+          <a href="#">Surface Water Drainage</a>
+          <a href="#">Kerbs &amp; Edging</a>
+          <a href="#">Steps</a>
+        </div>
+        <div class="fcol">
+          <h4>Support</h4>
+          <a href="#">CPD for Architects &amp; Specifiers</a>
+          <a href="#">Guides</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">
+        <div class="fb-copy">©2026 - Holcim UK Limited | Bradstone</div>
+        <nav class="fb-legal">
+          <a href="#">Legal</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Privacy Policy</a>
+        </nav>
+        <div class="fb-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.47-4.05 4.17v2.33H7.8V13h2.7v8h3z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a2.6 2.6 0 0 0-1.8-1.85C18.6 6 12 6 12 6s-6.6 0-8.2.35A2.6 2.6 0 0 0 2 8.2 27 27 0 0 0 1.75 12 27 27 0 0 0 2 15.8a2.6 2.6 0 0 0 1.8 1.85C5.4 18 12 18 12 18s6.6 0 8.2-.35A2.6 2.6 0 0 0 22 15.8 27 27 0 0 0 22.25 12 27 27 0 0 0 22 8.2zM10 14.6V9.4l4.4 2.6z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.6c2.4 0 2.68.01 3.63.05.88.04 1.35.19 1.66.31.42.16.72.36 1.03.67.31.31.51.61.67 1.03.12.31.27.78.31 1.66.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.04.88-.19 1.35-.31 1.66-.16.42-.36.72-.67 1.03-.31.31-.61.51-1.03.67-.31.12-.78.27-1.66.31-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-.88-.04-1.35-.19-1.66-.31a2.78 2.78 0 0 1-1.03-.67 2.78 2.78 0 0 1-.67-1.03c-.12-.31-.27-.78-.31-1.66C4.61 14.68 4.6 14.4 4.6 12s.01-2.68.05-3.63c.04-.88.19-1.35.31-1.66.16-.42.36-.72.67-1.03.31-.31.61-.51 1.03-.67.31-.12.78-.27 1.66-.31C9.32 4.61 9.6 4.6 12 4.6M12 3c-2.44 0-2.75.01-3.71.05-.96.04-1.61.2-2.18.42-.6.23-1.1.54-1.6 1.04-.5.5-.81 1-1.04 1.6-.22.57-.38 1.22-.42 2.18C3 9.25 3 9.56 3 12s.01 2.75.05 3.71c.04.96.2 1.61.42 2.18.23.6.54 1.1 1.04 1.6.5.5 1 .81 1.6 1.04.57.22 1.22.38 2.18.42.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c.96-.04 1.61-.2 2.18-.42.6-.23 1.1-.54 1.6-1.04.5-.5.81-1 1.04-1.6.22-.57.38-1.22.42-2.18.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.04-.96-.2-1.61-.42-2.18a4.3 4.3 0 0 0-1.04-1.6 4.3 4.3 0 0 0-1.6-1.04c-.57-.22-1.22-.38-2.18-.42C14.75 3 14.44 3 12 3zm0 4.38A4.62 4.62 0 1 0 16.62 12 4.62 4.62 0 0 0 12 7.38zm0 7.62A3 3 0 1 1 15 12a3 3 0 0 1-3 3zm4.8-8.87a1.08 1.08 0 1 0 1.08 1.08 1.08 1.08 0 0 0-1.08-1.08z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // On a valid submit (browser enforces the required fields first),
+    // go to the success page. preventDefault keeps form data out of the URL.
+    document.getElementById('quoteForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      window.location.href = 'quote-success.html';
+    });
+  <\/script>
+
+</body>
+</html>
+</script>
+<script type="text/html" id="p:quote-success"><!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quote Submitted – Bradstone Commercial</title>
+
+<!-- Bradstone's real Adobe Typekit kit: ivypresto-display (serif headings) + halyard-text (sans body/UI) -->
+<link rel="stylesheet" href="https://use.typekit.net/kjz6hbv.css">
+
+<style>
+  :root{
+    --charcoal:#524D56;
+    --green:#005209;
+    --dark:#29272B;
+    --border:#D4D3D5;
+    --line:#E6E5E7;
+    --white:#ffffff;
+    --sans:"halyard-text",-apple-system,"Segoe UI",Arial,sans-serif;
+    --serif:"ivypresto-display",Georgia,"Times New Roman",serif;
+    --maxw:1776px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:var(--sans);font-size:16px;line-height:24px;color:var(--charcoal);background:var(--white);}
+  a{color:var(--charcoal);text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 12px;}
+
+  /* ===================== TOP DARK STRIP ===================== */
+  .topbar{background:var(--dark);color:#cfced1;}
+  .topbar .wrap{display:flex;align-items:stretch;justify-content:space-between;height:36px;}
+  .topbar-tabs{display:flex;height:100%;}
+  .topbar-tabs a{display:flex;align-items:center;padding:0 20px;height:100%;font-size:11px;letter-spacing:.06em;color:#b7b6ba;text-transform:uppercase;}
+  .topbar-tabs a.active{background:#3a383d;color:#fff;}
+  .topbar-social{display:flex;align-items:center;gap:18px;padding-right:2px;}
+  .topbar-social a{color:#b7b6ba;display:flex;}
+  .topbar-social svg{width:15px;height:15px;fill:currentColor;}
+
+  /* ===================== MAIN NAV ===================== */
+  .mainnav{border-bottom:1px solid var(--line);background:#fff;}
+  .mainnav .wrap{display:flex;align-items:center;gap:28px;height:104px;}
+  .logo img{height:34px;width:auto;}
+  .primary-links{display:flex;align-items:center;gap:30px;margin-left:8px;}
+  .primary-links a{font-size:18px;color:var(--charcoal);display:flex;align-items:center;gap:8px;}
+  .primary-links a .caret{width:9px;height:9px;border-right:2px solid #8f8b92;border-bottom:2px solid #8f8b92;transform:rotate(45deg);margin-top:-4px;}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:28px;}
+  .search{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:80px;padding:11px 22px;min-width:230px;color:#8f8b92;}
+  .search input{border:0;outline:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--charcoal);width:100%;}
+  .search input::placeholder{color:#9a969d;}
+  .search svg{width:18px;height:18px;stroke:#8f8b92;fill:none;stroke-width:2;flex:none;}
+  .phone{font-size:20px;font-weight:500;color:var(--charcoal);white-space:nowrap;}
+  .utils{display:flex;align-items:flex-start;gap:26px;}
+  .util{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;color:var(--charcoal);width:74px;}
+  .util .ico{height:26px;display:flex;align-items:center;justify-content:center;}
+  .util .ico svg,.util .ico img{height:26px;width:auto;}
+  .util .ico svg{stroke:var(--charcoal);fill:none;stroke-width:1.4;}
+  .util span{font-size:13px;line-height:15px;}
+
+  /* ===================== SUCCESS ===================== */
+  .success{padding:88px 0 100px;}
+  .success-inner{max-width:640px;margin:0 auto;text-align:center;}
+  .success-icon{width:92px;height:92px;margin:0 auto 30px;border-radius:50%;background:rgba(0,82,9,.08);display:flex;align-items:center;justify-content:center;}
+  .success-icon svg{width:46px;height:46px;stroke:var(--green);fill:none;stroke-width:2.4;}
+  .success-title{font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.1;color:var(--charcoal);margin:0 0 22px;}
+  .success-title .g{color:var(--green);font-weight:700;}
+  .success-lead{font-size:18px;line-height:28px;color:var(--charcoal);margin:0 auto 16px;max-width:560px;}
+  .success-note{font-size:16px;line-height:24px;color:#7a767e;margin:0 auto 38px;max-width:520px;}
+  .success-note a{color:var(--green);font-weight:600;}
+  .success-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary,.btn-outline{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:16px;font-weight:500;line-height:1;padding:16px 32px;border-radius:80px;border:1.5px solid var(--green);cursor:pointer;text-decoration:none;transition:background-color .18s ease,color .18s ease;}
+  .btn-primary{background:var(--green);color:#fff;gap:10px;}
+  .btn-primary:hover{background:#00400a;border-color:#00400a;}
+  .btn-primary svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex:none;}
+  .btn-outline{background:transparent;color:var(--green);}
+  .btn-outline:hover{background:var(--green);color:#fff;}
+
+  /* ===================== FOOTER ===================== */
+  .site-footer{background:#F4F8F0;margin-top:24px;}
+  .footer-main{display:flex;gap:60px;padding:56px 0 48px;flex-wrap:wrap;}
+  .footer-left{flex:1 1 520px;min-width:300px;}
+  .footer-logo{opacity:.5;margin-bottom:26px;}
+  .footer-logo img{height:30px;}
+  .news-card{background:#fff;border-radius:16px;padding:24px 32px;max-width:570px;text-align:center;}
+  .news-card h3{font-size:30px;font-weight:600;color:var(--charcoal);margin:6px 0 12px;}
+  .news-card h3 .g{color:#669CEE;}
+  .news-card .news-sub{font-size:16px;color:var(--charcoal);margin:0 0 22px;}
+  .news-form{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:80px;background:#fff;padding:6px 6px 6px 10px;}
+  .news-form input{flex:1;border:0;outline:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--charcoal);padding:10px 14px;}
+  .news-form input::placeholder{color:#9a969d;}
+  .subscribe{display:inline-flex;align-items:center;gap:12px;background:var(--charcoal);color:#fff;border:0;border-radius:80px;padding:13px 24px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .subscribe svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.6;}
+  .footer-cols{display:flex;gap:56px;flex:1 1 620px;flex-wrap:wrap;padding-top:6px;}
+  .fcol h4{font-size:18px;font-weight:700;color:var(--green);text-transform:uppercase;margin:0 0 20px;letter-spacing:.02em;}
+  .fcol a{display:block;font-size:16px;color:var(--charcoal);margin-bottom:14px;}
+  .fcol a:hover{text-decoration:underline;}
+  .footer-bottom{background:#D1E0C2;}
+  .footer-bottom .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0;flex-wrap:wrap;}
+  .fb-copy{font-size:15px;color:var(--charcoal);}
+  .fb-legal{display:flex;gap:26px;flex-wrap:wrap;}
+  .fb-legal a{font-size:15px;color:var(--charcoal);}
+  .fb-legal a:hover{text-decoration:underline;}
+  .fb-social{display:flex;gap:16px;}
+  .fb-social a{color:var(--charcoal);display:flex;}
+  .fb-social svg{width:16px;height:16px;fill:currentColor;}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:1080px){
+    .primary-links{display:none;}
+    .mainnav .wrap{height:88px;gap:18px;}
+  }
+  @media (max-width:900px){
+    .nav-right{gap:16px;}
+    .search{display:none;}
+    .topbar-tabs a{padding:0 12px;font-size:10px;}
+    .success{padding:64px 0 72px;}
+    .success-title{font-size:42px;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px;}
+    .success-title{font-size:34px;}
+    .success-lead{font-size:16px;line-height:24px;}
+    .success-actions{flex-direction:column;}
+    .btn-primary,.btn-outline{width:100%;}
+    .footer-main{gap:32px;padding:40px 0 32px;}
+    .footer-cols{gap:32px;}
+    .footer-bottom .wrap{flex-direction:column;align-items:flex-start;gap:12px;}
+    .news-card{padding:20px;}
+    .news-card h3{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ TOP DARK STRIP ============ -->
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="topbar-tabs">
+        <a href="#">Bradstone</a>
+        <a href="#">Bradstone Homeowner</a>
+        <a href="#" class="active">Bradstone Commercial</a>
+      </nav>
+      <div class="topbar-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.47-4.05 4.17v2.33H7.8V13h2.7v8h3z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a2.6 2.6 0 0 0-1.8-1.85C18.6 6 12 6 12 6s-6.6 0-8.2.35A2.6 2.6 0 0 0 2 8.2 27 27 0 0 0 1.75 12 27 27 0 0 0 2 15.8a2.6 2.6 0 0 0 1.8 1.85C5.4 18 12 18 12 18s6.6 0 8.2-.35A2.6 2.6 0 0 0 22 15.8 27 27 0 0 0 22.25 12 27 27 0 0 0 22 8.2zM10 14.6V9.4l4.4 2.6z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.6c2.4 0 2.68.01 3.63.05.88.04 1.35.19 1.66.31.42.16.72.36 1.03.67.31.31.51.61.67 1.03.12.31.27.78.31 1.66.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.04.88-.19 1.35-.31 1.66-.16.42-.36.72-.67 1.03-.31.31-.61.51-1.03.67-.31.12-.78.27-1.66.31-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-.88-.04-1.35-.19-1.66-.31a2.78 2.78 0 0 1-1.03-.67 2.78 2.78 0 0 1-.67-1.03c-.12-.31-.27-.78-.31-1.66C4.61 14.68 4.6 14.4 4.6 12s.01-2.68.05-3.63c.04-.88.19-1.35.31-1.66.16-.42.36-.72.67-1.03.31-.31.61-.51 1.03-.67.31-.12.78-.27 1.66-.31C9.32 4.61 9.6 4.6 12 4.6M12 3c-2.44 0-2.75.01-3.71.05-.96.04-1.61.2-2.18.42-.6.23-1.1.54-1.6 1.04-.5.5-.81 1-1.04 1.6-.22.57-.38 1.22-.42 2.18C3 9.25 3 9.56 3 12s.01 2.75.05 3.71c.04.96.2 1.61.42 2.18.23.6.54 1.1 1.04 1.6.5.5 1 .81 1.6 1.04.57.22 1.22.38 2.18.42.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c.96-.04 1.61-.2 2.18-.42.6-.23 1.1-.54 1.6-1.04.5-.5.81-1 1.04-1.6.22-.57.38-1.22.42-2.18.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.04-.96-.2-1.61-.42-2.18a4.3 4.3 0 0 0-1.04-1.6 4.3 4.3 0 0 0-1.6-1.04c-.57-.22-1.22-.38-2.18-.42C14.75 3 14.44 3 12 3zm0 4.38A4.62 4.62 0 1 0 16.62 12 4.62 4.62 0 0 0 12 7.38zm0 7.62A3 3 0 1 1 15 12a3 3 0 0 1-3 3zm4.8-8.87a1.08 1.08 0 1 0 1.08 1.08 1.08 1.08 0 0 0-1.08-1.08z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MAIN NAV ============ -->
+  <header class="mainnav">
+    <div class="wrap">
+      <a class="logo" href="andover-infilta.html" aria-label="Bradstone Commercial">
+        <img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone">
+      </a>
+      <nav class="primary-links">
+        <a href="#">Solutions <i class="caret"></i></a>
+        <a href="#">Case Studies</a>
+        <a href="#">News &amp; Resources <i class="caret"></i></a>
+        <a href="#">Contact Us</a>
+      </nav>
+      <div class="nav-right">
+        <div class="search">
+          <input type="text" placeholder="How can we help?" aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+        </div>
+        <a class="phone" href="tel:01335372222">01335 372222</a>
+        <div class="utils">
+          <a class="util" href="#" title="Free Brochure">
+            <span class="ico"><img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/icons/icon-free-brochure.svg" alt=""></span>
+            <span>Free Brochure</span>
+          </a>
+          <a class="util" href="quote-cart.html" title="Quote">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><line x1="9.5" y1="12" x2="15" y2="12"/><line x1="9.5" y1="15.5" x2="15" y2="15.5"/></svg></span>
+            <span>Quote</span>
+          </a>
+          <a class="util" href="sample-cart.html" title="Sample">
+            <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span>
+            <span>Sample</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SUCCESS ============ -->
+  <main class="wrap success">
+    <div class="success-inner">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1 class="success-title">Quote <span class="g">Submitted</span></h1>
+      <p class="success-lead">Thank you for your enquiry. We&rsquo;ve received your quote request and a member of the Bradstone team will be in touch shortly to discuss your requirements.</p>
+      <p class="success-note">A confirmation has been sent to your email address. If you have any questions in the meantime, please call us on <a href="tel:01335372222">01335 372222</a>.</p>
+      <div class="success-actions">
+        <a class="btn-primary" href="#">Continue browsing
+          <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-main">
+      <div class="footer-left">
+        <div class="footer-logo"><img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone"></div>
+        <div class="news-card">
+          <h3>Build <span class="g">GREAT</span> Outdoors</h3>
+          <p class="news-sub">Sign up to our newsletter for the latest product info and updates.</p>
+          <div class="news-form">
+            <input type="email" placeholder="Enter your email address" aria-label="Email address">
+            <button class="subscribe">Subscribe <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Information</h4>
+          <a href="#">About Us</a>
+          <a href="#">Ethical Policy</a>
+          <a href="#">Bradstone Homeowner</a>
+          <a href="#">Bradstone Assured</a>
+        </div>
+        <div class="fcol">
+          <h4>Solutions</h4>
+          <a href="#">Concrete Flags &amp; Blocks</a>
+          <a href="#">British Standard Flag &amp; Kerb</a>
+          <a href="#">Active Travel</a>
+          <a href="#">Surface Water Drainage</a>
+          <a href="#">Kerbs &amp; Edging</a>
+          <a href="#">Steps</a>
+        </div>
+        <div class="fcol">
+          <h4>Support</h4>
+          <a href="#">CPD for Architects &amp; Specifiers</a>
+          <a href="#">Guides</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">
+        <div class="fb-copy">©2026 - Holcim UK Limited | Bradstone</div>
+        <nav class="fb-legal">
+          <a href="#">Legal</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Privacy Policy</a>
+        </nav>
+        <div class="fb-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.47-4.05 4.17v2.33H7.8V13h2.7v8h3z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a2.6 2.6 0 0 0-1.8-1.85C18.6 6 12 6 12 6s-6.6 0-8.2.35A2.6 2.6 0 0 0 2 8.2 27 27 0 0 0 1.75 12 27 27 0 0 0 2 15.8a2.6 2.6 0 0 0 1.8 1.85C5.4 18 12 18 12 18s6.6 0 8.2-.35A2.6 2.6 0 0 0 22 15.8 27 27 0 0 0 22.25 12 27 27 0 0 0 22 8.2zM10 14.6V9.4l4.4 2.6z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.6c2.4 0 2.68.01 3.63.05.88.04 1.35.19 1.66.31.42.16.72.36 1.03.67.31.31.51.61.67 1.03.12.31.27.78.31 1.66.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.04.88-.19 1.35-.31 1.66-.16.42-.36.72-.67 1.03-.31.31-.61.51-1.03.67-.31.12-.78.27-1.66.31-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-.88-.04-1.35-.19-1.66-.31a2.78 2.78 0 0 1-1.03-.67 2.78 2.78 0 0 1-.67-1.03c-.12-.31-.27-.78-.31-1.66C4.61 14.68 4.6 14.4 4.6 12s.01-2.68.05-3.63c.04-.88.19-1.35.31-1.66.16-.42.36-.72.67-1.03.31-.31.61-.51 1.03-.67.31-.12.78-.27 1.66-.31C9.32 4.61 9.6 4.6 12 4.6M12 3c-2.44 0-2.75.01-3.71.05-.96.04-1.61.2-2.18.42-.6.23-1.1.54-1.6 1.04-.5.5-.81 1-1.04 1.6-.22.57-.38 1.22-.42 2.18C3 9.25 3 9.56 3 12s.01 2.75.05 3.71c.04.96.2 1.61.42 2.18.23.6.54 1.1 1.04 1.6.5.5 1 .81 1.6 1.04.57.22 1.22.38 2.18.42.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c.96-.04 1.61-.2 2.18-.42.6-.23 1.1-.54 1.6-1.04.5-.5.81-1 1.04-1.6.22-.57.38-1.22.42-2.18.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.04-.96-.2-1.61-.42-2.18a4.3 4.3 0 0 0-1.04-1.6 4.3 4.3 0 0 0-1.6-1.04c-.57-.22-1.22-.38-2.18-.42C14.75 3 14.44 3 12 3zm0 4.38A4.62 4.62 0 1 0 16.62 12 4.62 4.62 0 0 0 12 7.38zm0 7.62A3 3 0 1 1 15 12a3 3 0 0 1-3 3zm4.8-8.87a1.08 1.08 0 1 0 1.08 1.08 1.08 1.08 0 0 0-1.08-1.08z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+</script>
+<script type="text/html" id="p:sample-cart"><!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Cart – Bradstone Commercial</title>
+
+<!-- Bradstone's real Adobe Typekit kit: ivypresto-display (serif headings) + halyard-text (sans body/UI) -->
+<link rel="stylesheet" href="https://use.typekit.net/kjz6hbv.css">
+
+<style>
+  :root{
+    --charcoal:#524D56;
+    --green:#005209;
+    --dark:#29272B;
+    --border:#D4D3D5;
+    --line:#E6E5E7;
+    --white:#ffffff;
+    --sans:"halyard-text",-apple-system,"Segoe UI",Arial,sans-serif;
+    --serif:"ivypresto-display",Georgia,"Times New Roman",serif;
+    --maxw:1776px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:var(--sans);font-size:16px;line-height:24px;color:var(--charcoal);background:var(--white);}
+  a{color:var(--charcoal);text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 12px;}
+
+  /* ===================== TOP DARK STRIP ===================== */
+  .topbar{background:var(--dark);color:#cfced1;}
+  .topbar .wrap{display:flex;align-items:stretch;justify-content:space-between;height:36px;}
+  .topbar-tabs{display:flex;height:100%;}
+  .topbar-tabs a{display:flex;align-items:center;padding:0 20px;height:100%;font-size:11px;letter-spacing:.06em;color:#b7b6ba;text-transform:uppercase;}
+  .topbar-tabs a.active{background:#3a383d;color:#fff;}
+  .topbar-social{display:flex;align-items:center;gap:18px;padding-right:2px;}
+  .topbar-social a{color:#b7b6ba;display:flex;}
+  .topbar-social svg{width:15px;height:15px;fill:currentColor;}
+
+  /* ===================== MAIN NAV ===================== */
+  .mainnav{border-bottom:1px solid var(--line);background:#fff;}
+  .mainnav .wrap{display:flex;align-items:center;gap:28px;height:104px;}
+  .logo img{height:34px;width:auto;}
+  .primary-links{display:flex;align-items:center;gap:30px;margin-left:8px;}
+  .primary-links a{font-size:18px;color:var(--charcoal);display:flex;align-items:center;gap:8px;}
+  .primary-links a .caret{width:9px;height:9px;border-right:2px solid #8f8b92;border-bottom:2px solid #8f8b92;transform:rotate(45deg);margin-top:-4px;}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:28px;}
+  .search{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:80px;padding:11px 22px;min-width:230px;color:#8f8b92;}
+  .search input{border:0;outline:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--charcoal);width:100%;}
+  .search input::placeholder{color:#9a969d;}
+  .search svg{width:18px;height:18px;stroke:#8f8b92;fill:none;stroke-width:2;flex:none;}
+  .phone{font-size:20px;font-weight:500;color:var(--charcoal);white-space:nowrap;}
+  .utils{display:flex;align-items:flex-start;gap:26px;}
+  .util{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;color:var(--charcoal);width:74px;}
+  .util .ico{height:26px;display:flex;align-items:center;justify-content:center;}
+  .util .ico svg,.util .ico img{height:26px;width:auto;}
+  .util .ico svg{stroke:var(--charcoal);fill:none;stroke-width:1.4;}
+  .util span{font-size:13px;line-height:15px;}
+
+  /* ===================== SAMPLE CART ===================== */
+  .sc{padding-top:34px;padding-bottom:72px;}
+  .sc-title{font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.1;color:var(--charcoal);margin:8px 0 40px;}
+  .sc-title .g{color:var(--green);font-weight:700;}
+  .sc-body{display:flex;align-items:flex-start;gap:clamp(32px,4vw,60px);}
+
+  /* left: cart */
+  .sc-cart{flex:1 1 auto;min-width:0;}
+  .sc-thead{display:grid;grid-template-columns:1fr 130px 130px 150px;gap:20px;padding:0 28px 14px;font-size:15px;font-weight:700;color:var(--charcoal);text-transform:uppercase;letter-spacing:.01em;}
+  .sc-thead .c-price,.sc-thead .c-qty{text-align:center;}
+  .sc-thead .c-sub{text-align:right;}
+
+  /* bordered item card */
+  .sc-card{border:1px solid #E3E2E5;border-radius:8px;padding:28px;}
+  .sc-row{display:grid;grid-template-columns:1fr 130px 130px 150px;gap:20px;align-items:center;}
+  .sc-item-cell{display:flex;gap:26px;}
+  .sc-thumb{flex:none;width:120px;height:120px;border-radius:6px;overflow:hidden;background:#efeef0;}
+  .sc-thumb img{width:100%;height:100%;object-fit:cover;}
+  .sc-info .name{font-size:16px;font-weight:700;text-transform:uppercase;color:var(--charcoal);margin:0 0 12px;}
+  .sc-info .attr{font-size:16px;color:var(--charcoal);margin:0 0 6px;}
+  .sc-info .attr b{font-weight:700;}
+  .c-price,.c-sub{font-size:16px;font-weight:700;color:var(--charcoal);}
+  .c-price{text-align:center;}
+  .c-sub{text-align:right;}
+  .c-qty{display:flex;justify-content:center;}
+  .qty-input{width:96px;height:48px;text-align:center;border:1px solid var(--border);border-radius:50px;font-family:var(--sans);font-size:16px;color:var(--charcoal);outline:none;}
+  .qty-input:focus{border-color:var(--green);}
+  .m-label{display:none;}
+
+  .card-actions{display:flex;justify-content:flex-end;padding-top:22px;margin-top:26px;border-top:1px solid #ebeaec;}
+  .remove-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:var(--charcoal);cursor:pointer;}
+  .remove-link:hover{color:var(--green);}
+  .remove-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex:none;}
+
+  /* bottom actions */
+  .sc-actions{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:26px;flex-wrap:wrap;}
+  .btn-continue{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #E3E2E5;border-radius:80px;padding:15px 30px;font-family:var(--sans);font-size:15px;font-weight:500;text-transform:uppercase;letter-spacing:.01em;color:var(--charcoal);cursor:pointer;transition:background-color .18s,border-color .18s;}
+  .btn-continue:hover{background:#f7f7f8;border-color:#d4d3d5;}
+  .btn-dark,.btn-light{display:inline-flex;align-items:center;gap:13px;border:0;border-radius:80px;padding:14px 26px;font-family:var(--sans);font-size:15px;font-weight:400;text-transform:uppercase;letter-spacing:.01em;cursor:pointer;transition:background-color .18s;}
+  .btn-dark{background:var(--charcoal);color:#fff;}
+  .btn-dark:hover{background:#3f3b43;}
+  .btn-light{background:#F4F4F5;color:var(--charcoal);}
+  .btn-light:hover{background:#e8e7ea;}
+  .btn-dark svg,.btn-light svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;flex:none;}
+  .btn-arw{margin-left:4px;}
+  /* summary continue link (text + chevron) */
+  .continue-link{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;text-transform:uppercase;color:var(--charcoal);cursor:pointer;}
+  .continue-link:hover{color:var(--green);}
+  .continue-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex:none;}
+
+  /* right: summary */
+  .sc-summary{flex:0 0 380px;max-width:380px;background:#F4F4F5;border-radius:16px;padding:28px 30px 30px;}
+  .summary-title{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1;color:var(--charcoal);margin:0 0 6px;padding-bottom:18px;border-bottom:1px solid #dcdbdd;}
+  .sum-accordion{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:0;padding:18px 0;border-bottom:1px solid #dcdbdd;font-family:var(--sans);font-size:18px;font-weight:400;color:var(--charcoal);cursor:pointer;text-align:left;}
+  .sum-accordion svg{width:16px;height:16px;stroke:#8a868f;fill:none;stroke-width:2;flex:none;}
+  .sum-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid #dcdbdd;font-size:16px;color:var(--charcoal);}
+  .sum-row.total{border-bottom:0;padding:18px 0 4px;font-size:20px;font-weight:700;}
+  .checkout{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;background:var(--green);color:#fff;border:0;border-radius:80px;padding:16px 26px;font-family:var(--sans);font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;cursor:pointer;margin-top:20px;transition:background-color .18s;}
+  .checkout:hover{background:#00400a;}
+  .checkout svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex:none;}
+  .summary-continue{display:flex;justify-content:center;margin-top:16px;}
+
+  /* ===================== FOOTER ===================== */
+  .site-footer{background:#F4F8F0;margin-top:24px;}
+  .footer-main{display:flex;gap:60px;padding:56px 0 48px;flex-wrap:wrap;}
+  .footer-left{flex:1 1 520px;min-width:300px;}
+  .footer-logo{opacity:.5;margin-bottom:26px;}
+  .footer-logo img{height:30px;}
+  .news-card{background:#fff;border-radius:16px;padding:24px 32px;max-width:570px;text-align:center;}
+  .news-card h3{font-size:30px;font-weight:600;color:var(--charcoal);margin:6px 0 12px;}
+  .news-card h3 .g{color:#669CEE;}
+  .news-card .news-sub{font-size:16px;color:var(--charcoal);margin:0 0 22px;}
+  .news-form{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:80px;background:#fff;padding:6px 6px 6px 10px;}
+  .news-form input{flex:1;border:0;outline:0;background:transparent;font-family:var(--sans);font-size:16px;color:var(--charcoal);padding:10px 14px;}
+  .news-form input::placeholder{color:#9a969d;}
+  .subscribe{display:inline-flex;align-items:center;gap:12px;background:var(--charcoal);color:#fff;border:0;border-radius:80px;padding:13px 24px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .subscribe svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.6;}
+  .footer-cols{display:flex;gap:56px;flex:1 1 620px;flex-wrap:wrap;padding-top:6px;}
+  .fcol h4{font-size:18px;font-weight:700;color:var(--green);text-transform:uppercase;margin:0 0 20px;letter-spacing:.02em;}
+  .fcol a{display:block;font-size:16px;color:var(--charcoal);margin-bottom:14px;}
+  .fcol a:hover{text-decoration:underline;}
+  .footer-bottom{background:#D1E0C2;}
+  .footer-bottom .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0;flex-wrap:wrap;}
+  .fb-copy{font-size:15px;color:var(--charcoal);}
+  .fb-legal{display:flex;gap:26px;flex-wrap:wrap;}
+  .fb-legal a{font-size:15px;color:var(--charcoal);}
+  .fb-legal a:hover{text-decoration:underline;}
+  .fb-social{display:flex;gap:16px;}
+  .fb-social a{color:var(--charcoal);display:flex;}
+  .fb-social svg{width:16px;height:16px;fill:currentColor;}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:1080px){
+    .primary-links{display:none;}
+    .mainnav .wrap{height:88px;gap:18px;}
+  }
+  @media (max-width:900px){
+    .sc-body{flex-direction:column;gap:36px;}
+    .sc-summary{flex-basis:auto;max-width:none;width:100%;}
+    .sc-title{font-size:44px;}
+    .nav-right{gap:16px;}
+    .search{display:none;}
+    .topbar-tabs a{padding:0 12px;font-size:10px;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px;}
+    .sc-title{font-size:34px;}
+    .sc-thead{display:none;}
+    .sc-card{padding:20px;}
+    .sc-row{grid-template-columns:1fr;gap:0;}
+    .sc-item-cell{padding-bottom:8px;}
+    .c-price,.c-qty,.c-sub{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:12px 0;border-top:1px solid var(--line);}
+    .c-qty{justify-content:space-between;}
+    .m-label{display:inline;font-weight:700;}
+    .sc-actions{flex-direction:column;align-items:stretch;gap:14px;}
+    .btn-continue{order:3;}
+    .btn-dark,.btn-light{justify-content:center;}
+    .footer-main{gap:32px;padding:40px 0 32px;}
+    .footer-cols{gap:32px;}
+    .footer-bottom .wrap{flex-direction:column;align-items:flex-start;gap:12px;}
+    .news-card{padding:20px;}
+    .news-card h3{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ TOP DARK STRIP ============ -->
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="topbar-tabs">
+        <a href="#">Bradstone</a>
+        <a href="#">Bradstone Homeowner</a>
+        <a href="#" class="active">Bradstone Commercial</a>
+      </nav>
+      <div class="topbar-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.47-4.05 4.17v2.33H7.8V13h2.7v8h3z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a2.6 2.6 0 0 0-1.8-1.85C18.6 6 12 6 12 6s-6.6 0-8.2.35A2.6 2.6 0 0 0 2 8.2 27 27 0 0 0 1.75 12 27 27 0 0 0 2 15.8a2.6 2.6 0 0 0 1.8 1.85C5.4 18 12 18 12 18s6.6 0 8.2-.35A2.6 2.6 0 0 0 22 15.8 27 27 0 0 0 22.25 12 27 27 0 0 0 22 8.2zM10 14.6V9.4l4.4 2.6z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.6c2.4 0 2.68.01 3.63.05.88.04 1.35.19 1.66.31.42.16.72.36 1.03.67.31.31.51.61.67 1.03.12.31.27.78.31 1.66.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.04.88-.19 1.35-.31 1.66-.16.42-.36.72-.67 1.03-.31.31-.61.51-1.03.67-.31.12-.78.27-1.66.31-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-.88-.04-1.35-.19-1.66-.31a2.78 2.78 0 0 1-1.03-.67 2.78 2.78 0 0 1-.67-1.03c-.12-.31-.27-.78-.31-1.66C4.61 14.68 4.6 14.4 4.6 12s.01-2.68.05-3.63c.04-.88.19-1.35.31-1.66.16-.42.36-.72.67-1.03.31-.31.61-.51 1.03-.67.31-.12.78-.27 1.66-.31C9.32 4.61 9.6 4.6 12 4.6M12 3c-2.44 0-2.75.01-3.71.05-.96.04-1.61.2-2.18.42-.6.23-1.1.54-1.6 1.04-.5.5-.81 1-1.04 1.6-.22.57-.38 1.22-.42 2.18C3 9.25 3 9.56 3 12s.01 2.75.05 3.71c.04.96.2 1.61.42 2.18.23.6.54 1.1 1.04 1.6.5.5 1 .81 1.6 1.04.57.22 1.22.38 2.18.42.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c.96-.04 1.61-.2 2.18-.42.6-.23 1.1-.54 1.6-1.04.5-.5.81-1 1.04-1.6.22-.57.38-1.22.42-2.18.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.04-.96-.2-1.61-.42-2.18a4.3 4.3 0 0 0-1.04-1.6 4.3 4.3 0 0 0-1.6-1.04c-.57-.22-1.22-.38-2.18-.42C14.75 3 14.44 3 12 3zm0 4.38A4.62 4.62 0 1 0 16.62 12 4.62 4.62 0 0 0 12 7.38zm0 7.62A3 3 0 1 1 15 12a3 3 0 0 1-3 3zm4.8-8.87a1.08 1.08 0 1 0 1.08 1.08 1.08 1.08 0 0 0-1.08-1.08z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MAIN NAV ============ -->
+  <header class="mainnav">
+    <div class="wrap">
+      <a class="logo" href="andover-infilta.html" aria-label="Bradstone Commercial">
+        <img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone">
+      </a>
+      <nav class="primary-links">
+        <a href="#">Solutions <i class="caret"></i></a>
+        <a href="#">Case Studies</a>
+        <a href="#">News &amp; Resources <i class="caret"></i></a>
+        <a href="#">Contact Us</a>
+      </nav>
+      <div class="nav-right">
+        <div class="search">
+          <input type="text" placeholder="How can we help?" aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+        </div>
+        <a class="phone" href="tel:01335372222">01335 372222</a>
+        <div class="utils">
+          <a class="util" href="#" title="Free Brochure">
+            <span class="ico"><img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/icons/icon-free-brochure.svg" alt=""></span>
+            <span>Free Brochure</span>
+          </a>
+          <a class="util" href="quote-cart.html" title="Quote">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><line x1="9.5" y1="12" x2="15" y2="12"/><line x1="9.5" y1="15.5" x2="15" y2="15.5"/></svg></span>
+            <span>Quote</span>
+          </a>
+          <a class="util" href="sample-cart.html" title="Sample">
+            <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span>
+            <span>Sample</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SAMPLE CART ============ -->
+  <main class="wrap sc">
+    <h1 class="sc-title">Sample <span class="g">Cart</span></h1>
+
+    <div class="sc-body">
+
+      <!-- LEFT: cart -->
+      <section class="sc-cart">
+        <div class="sc-thead">
+          <div class="c-item"></div>
+          <div class="c-price">Price</div>
+          <div class="c-qty">Qty</div>
+          <div class="c-sub">Subtotal (ex. VAT)</div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-row">
+            <div class="c-item">
+              <div class="sc-item-cell">
+                <div class="sc-thumb">
+                  <img src="https://www.bradstone.com/media/catalog/product/s/t/stonefleck_infilta_2.jpg?quality=80&bg-color=255,255,255&fit=bounds&width=300&height=300&canvas=300:300" alt="Andover Infilta">
+                </div>
+                <div class="sc-info">
+                  <p class="name">ANDOVER&reg; INFILTA</p>
+                  <p class="attr"><b>Colour:</b> Anthracite Charcoal</p>
+                  <p class="attr"><b>Type:</b> Sample</p>
+                </div>
+              </div>
+            </div>
+            <div class="c-price"><span class="m-label">Price</span>&pound;0.00</div>
+            <div class="c-qty"><span class="m-label">Qty</span><input class="qty-input" type="number" min="1" value="1"></div>
+            <div class="c-sub"><span class="m-label">Subtotal</span>&pound;0.00</div>
+          </div>
+
+          <div class="card-actions">
+            <a class="remove-link" href="#">Remove
+              <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="sc-actions">
+          <a class="btn-continue" href="#">Continue Shopping</a>
+          <button class="btn-dark" type="button">
+            <svg class="btn-ico" viewBox="0 0 24 24"><path d="M4 7h16" stroke-linecap="round"/><path d="M9 7V5h6v2M6.5 7l1 12h9l1-12" stroke-linejoin="round"/><path d="M10 11v5M14 11v5" stroke-linecap="round"/></svg>
+            <span>Clear Sample Cart</span>
+            <svg class="btn-arw" viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="btn-light" type="button">
+            <svg class="btn-ico" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z" stroke-linejoin="round"/><path d="M8 4v5h7V4M8 20v-6h8v6" stroke-linejoin="round"/></svg>
+            <span>Update Sample Cart</span>
+            <svg class="btn-arw" viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT: summary -->
+      <aside class="sc-summary">
+        <h2 class="summary-title">Summary</h2>
+        <button class="sum-accordion" type="button">
+          Apply Discount Code
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="sum-row">
+          <span>Subtotal</span>
+          <span>&pound;0.00</span>
+        </div>
+        <div class="sum-row">
+          <span>VAT</span>
+          <span>&pound;0.00</span>
+        </div>
+        <div class="sum-row total">
+          <span>Order Total</span>
+          <span>&pound;0.00</span>
+        </div>
+        <a class="checkout" href="checkout.html">Proceed to Checkout
+          <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="continue-link summary-continue" href="#">Continue Shopping
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-main">
+      <div class="footer-left">
+        <div class="footer-logo"><img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone"></div>
+        <div class="news-card">
+          <h3>Build <span class="g">GREAT</span> Outdoors</h3>
+          <p class="news-sub">Sign up to our newsletter for the latest product info and updates.</p>
+          <div class="news-form">
+            <input type="email" placeholder="Enter your email address" aria-label="Email address">
+            <button class="subscribe">Subscribe <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Information</h4>
+          <a href="#">About Us</a>
+          <a href="#">Ethical Policy</a>
+          <a href="#">Bradstone Homeowner</a>
+          <a href="#">Bradstone Assured</a>
+        </div>
+        <div class="fcol">
+          <h4>Solutions</h4>
+          <a href="#">Concrete Flags &amp; Blocks</a>
+          <a href="#">British Standard Flag &amp; Kerb</a>
+          <a href="#">Active Travel</a>
+          <a href="#">Surface Water Drainage</a>
+          <a href="#">Kerbs &amp; Edging</a>
+          <a href="#">Steps</a>
+        </div>
+        <div class="fcol">
+          <h4>Support</h4>
+          <a href="#">CPD for Architects &amp; Specifiers</a>
+          <a href="#">Guides</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">
+        <div class="fb-copy">©2026 - Holcim UK Limited | Bradstone</div>
+        <nav class="fb-legal">
+          <a href="#">Legal</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Privacy Policy</a>
+        </nav>
+        <div class="fb-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.47-4.05 4.17v2.33H7.8V13h2.7v8h3z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a2.6 2.6 0 0 0-1.8-1.85C18.6 6 12 6 12 6s-6.6 0-8.2.35A2.6 2.6 0 0 0 2 8.2 27 27 0 0 0 1.75 12 27 27 0 0 0 2 15.8a2.6 2.6 0 0 0 1.8 1.85C5.4 18 12 18 12 18s6.6 0 8.2-.35A2.6 2.6 0 0 0 22 15.8 27 27 0 0 0 22.25 12 27 27 0 0 0 22 8.2zM10 14.6V9.4l4.4 2.6z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.6c2.4 0 2.68.01 3.63.05.88.04 1.35.19 1.66.31.42.16.72.36 1.03.67.31.31.51.61.67 1.03.12.31.27.78.31 1.66.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.04.88-.19 1.35-.31 1.66-.16.42-.36.72-.67 1.03-.31.31-.61.51-1.03.67-.31.12-.78.27-1.66.31-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-.88-.04-1.35-.19-1.66-.31a2.78 2.78 0 0 1-1.03-.67 2.78 2.78 0 0 1-.67-1.03c-.12-.31-.27-.78-.31-1.66C4.61 14.68 4.6 14.4 4.6 12s.01-2.68.05-3.63c.04-.88.19-1.35.31-1.66.16-.42.36-.72.67-1.03.31-.31.61-.51 1.03-.67.31-.12.78-.27 1.66-.31C9.32 4.61 9.6 4.6 12 4.6M12 3c-2.44 0-2.75.01-3.71.05-.96.04-1.61.2-2.18.42-.6.23-1.1.54-1.6 1.04-.5.5-.81 1-1.04 1.6-.22.57-.38 1.22-.42 2.18C3 9.25 3 9.56 3 12s.01 2.75.05 3.71c.04.96.2 1.61.42 2.18.23.6.54 1.1 1.04 1.6.5.5 1 .81 1.6 1.04.57.22 1.22.38 2.18.42.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c.96-.04 1.61-.2 2.18-.42.6-.23 1.1-.54 1.6-1.04.5-.5.81-1 1.04-1.6.22-.57.38-1.22.42-2.18.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.04-.96-.2-1.61-.42-2.18a4.3 4.3 0 0 0-1.04-1.6 4.3 4.3 0 0 0-1.6-1.04c-.57-.22-1.22-.38-2.18-.42C14.75 3 14.44 3 12 3zm0 4.38A4.62 4.62 0 1 0 16.62 12 4.62 4.62 0 0 0 12 7.38zm0 7.62A3 3 0 1 1 15 12a3 3 0 0 1-3 3zm4.8-8.87a1.08 1.08 0 1 0 1.08 1.08 1.08 1.08 0 0 0-1.08-1.08z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+</script>
+<script type="text/html" id="p:checkout"><!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout – Bradstone Commercial</title>
+
+<!-- Bradstone's real Adobe Typekit kit: ivypresto-display (serif headings) + halyard-text (sans body/UI) -->
+<link rel="stylesheet" href="https://use.typekit.net/kjz6hbv.css">
+
+<style>
+  :root{
+    --charcoal:#524D56;
+    --green:#005209;
+    --dark:#29272B;
+    --border:#D4D3D5;
+    --line:#E6E5E7;
+    --white:#ffffff;
+    --sans:"halyard-text",-apple-system,"Segoe UI",Arial,sans-serif;
+    --serif:"ivypresto-display",Georgia,"Times New Roman",serif;
+    --maxw:1776px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:var(--sans);font-size:16px;line-height:24px;color:var(--charcoal);background:var(--white);}
+  a{color:var(--charcoal);text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 12px;}
+
+  /* ===================== MINIMAL CHECKOUT HEADER ===================== */
+  .co-header{border-bottom:1px solid var(--line);padding:26px 0;}
+  .co-header .wrap{display:flex;justify-content:center;}
+  .co-logo img{height:30px;width:auto;}
+
+  /* ===================== CHECKOUT ===================== */
+  .co{padding-top:40px;padding-bottom:80px;}
+  .co-title{font-family:var(--serif);font-weight:400;font-size:36px;line-height:1.1;color:var(--charcoal);margin:8px 0 26px;}
+
+  /* step indicator */
+  .steps{display:flex;align-items:flex-start;margin:0 0 40px;}
+  .step{display:flex;flex-direction:column;align-items:center;gap:9px;width:72px;}
+  .step .circle{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;background:#fff;border:1px solid #bcb9c0;color:var(--charcoal);}
+  .step.active .circle{background:var(--dark);border-color:var(--dark);color:#fff;}
+  .step .label{font-size:14px;color:var(--charcoal);}
+  .step-line{flex:0 0 64px;height:1px;background:#cfcdd1;margin-top:17px;}
+
+  .co-body{display:flex;align-items:flex-start;gap:24px;}
+  .co-left{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:24px;}
+  .co-card{border:1px solid var(--border);border-radius:20px;background:#fff;padding:44px 56px;}
+  .co-head{font-family:var(--serif);font-weight:300;font-size:24px;line-height:1.1;color:var(--charcoal);margin:0 0 28px;}
+
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:16px;font-weight:600;color:var(--charcoal);margin-bottom:8px;}
+  .field label .req{color:#e02b2b;}
+  .input-wrap{position:relative;}
+  .field input,.field select{width:100%;background:#fff;border:1px solid var(--border);border-radius:80px;padding:12px 24px;height:48px;font-family:var(--sans);font-size:16px;color:var(--charcoal);outline:none;appearance:none;-webkit-appearance:none;}
+  .field input:focus,.field select:focus{border-color:var(--green);}
+  .info-i{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:1.5;pointer-events:none;}
+  .sel-chev{position:absolute;right:20px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--charcoal);fill:none;stroke-width:2;pointer-events:none;}
+  .helper{font-size:14px;color:#8a868f;margin-top:8px;}
+  .check-row{display:flex;align-items:flex-start;gap:12px;margin-top:10px;}
+  .check-row input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--green);cursor:pointer;}
+  .check-row label{font-size:15px;font-weight:700;color:var(--charcoal);line-height:22px;}
+
+  /* delivery methods */
+  .method-note{font-size:15px;color:var(--charcoal);margin:0 0 26px;}
+  .method-note b{font-weight:700;}
+  .method-note a{color:var(--green);text-decoration:underline;}
+  .method-head,.method-row{display:grid;grid-template-columns:150px 120px 1fr 1fr;gap:16px;align-items:center;}
+  .method-head{font-size:14px;font-weight:600;text-transform:uppercase;color:var(--charcoal);padding-bottom:12px;}
+  .method-row{padding:14px 0;font-size:16px;color:var(--charcoal);}
+  .method-row input[type=radio]{width:20px;height:20px;accent-color:var(--green);cursor:pointer;}
+  .co-next{display:inline-flex;align-items:center;gap:12px;background:var(--green);color:#fff;border:0;border-radius:80px;padding:15px 30px;font-family:var(--sans);font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;cursor:pointer;margin-top:28px;transition:background-color .18s;}
+  .co-next:hover{background:#00400a;}
+  .co-next svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex:none;}
+
+  /* summary */
+  .co-summary{flex:0 0 620px;max-width:620px;border:1px solid var(--border);border-radius:20px;background:#fff;padding:28px 30px;}
+  .sum-item{display:flex;gap:22px;align-items:flex-start;}
+  .sum-thumb{flex:none;width:88px;height:88px;border-radius:8px;overflow:hidden;background:#efeef0;}
+  .sum-thumb img{width:100%;height:100%;object-fit:cover;}
+  .sum-info{flex:1;min-width:0;}
+  .sum-top{display:flex;justify-content:space-between;gap:16px;}
+  .sum-name{font-size:16px;font-weight:700;text-transform:uppercase;color:var(--charcoal);line-height:1.3;}
+  .sum-price{font-size:16px;color:var(--charcoal);white-space:nowrap;}
+  .sum-attr{font-size:15px;color:var(--charcoal);margin:8px 0 0;}
+  .sum-qty{font-size:14px;font-weight:700;text-transform:uppercase;color:var(--charcoal);margin:12px 0 0;}
+  .sum-qty span{font-weight:400;}
+  .view-details{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;font-family:var(--sans);color:var(--green);font-size:16px;font-weight:500;margin-top:18px;cursor:pointer;}
+  .view-details svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s ease;}
+  .view-details[aria-expanded="true"] svg{transform:rotate(180deg);}
+  .sum-details{display:none;margin-top:4px;}
+  .sum-details.show{display:block;}
+
+  /* minimal footer */
+  .co-foot{border-top:1px solid var(--line);padding:22px 0;text-align:center;font-size:14px;color:#8a868f;}
+  .co-foot a{color:#8a868f;margin:0 12px;}
+  .co-foot a:hover{text-decoration:underline;}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:980px){
+    .co-body{flex-direction:column;gap:24px;}
+    .co-summary{flex-basis:auto;max-width:none;width:100%;order:-1;}
+    .co-card{padding:32px 28px;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px;}
+    .method-head{display:none;}
+    .method-row{grid-template-columns:28px 1fr auto;grid-template-areas:"r t p";}
+    .method-row .m-sel{grid-area:r;}
+    .method-row .m-title{grid-area:t;}
+    .method-row .m-price{grid-area:p;font-weight:700;}
+    .method-row .m-carrier{display:none;}
+    .co-card{padding:26px 20px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ MINIMAL HEADER ============ -->
+  <header class="co-header">
+    <div class="wrap">
+      <a class="co-logo" href="andover-infilta.html" aria-label="Bradstone">
+        <img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone">
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ CHECKOUT ============ -->
+  <main class="wrap co">
+    <h1 class="co-title">Checkout</h1>
+
+    <div class="steps">
+      <div class="step active">
+        <div class="circle">1</div>
+        <div class="label">Delivery</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="circle">2</div>
+        <div class="label">Payment</div>
+      </div>
+    </div>
+
+    <div class="co-body">
+
+      <!-- LEFT: form -->
+      <div class="co-left">
+
+        <section class="co-card">
+          <h2 class="co-head">Delivery Address</h2>
+
+          <div class="field">
+            <label>Email Address <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="email" required>
+              <svg class="info-i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16.5" stroke-linecap="round"/><circle cx="12" cy="8" r="1" fill="var(--green)" stroke="none"/></svg>
+            </div>
+            <p class="helper">You can create an account after checkout.</p>
+          </div>
+
+          <div class="field">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" required>
+          </div>
+          <div class="field">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" required>
+          </div>
+          <div class="field">
+            <label>Company</label>
+            <input type="text">
+          </div>
+          <div class="field">
+            <label>Address: Line 1 <span class="req">*</span></label>
+            <input type="text" required>
+          </div>
+          <div class="field">
+            <label>Address: Line 2</label>
+            <input type="text">
+          </div>
+          <div class="field">
+            <label>Country <span class="req">*</span></label>
+            <div class="input-wrap">
+              <select required>
+                <option>United Kingdom</option>
+                <option>Ireland</option>
+              </select>
+              <svg class="sel-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="field">
+            <label>County</label>
+            <input type="text">
+          </div>
+          <div class="field">
+            <label>Town / City <span class="req">*</span></label>
+            <input type="text" required>
+          </div>
+          <div class="field">
+            <label>Postcode</label>
+            <input type="text">
+          </div>
+          <div class="field">
+            <label>Phone Number <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="tel" required>
+              <svg class="info-i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16.5" stroke-linecap="round"/><circle cx="12" cy="8" r="1" fill="var(--green)" stroke="none"/></svg>
+            </div>
+          </div>
+
+          <div class="check-row">
+            <input type="checkbox" id="marketing">
+            <label for="marketing">Stay up to date with our latest offers and promotions. Tick this box to allow us to send you marketing emails.</label>
+          </div>
+        </section>
+
+        <section class="co-card">
+          <h2 class="co-head">Delivery Methods</h2>
+          <p class="method-note"><b>Please note</b>: We offer kerbside delivery only. <a href="#">Click here</a> to learn more about our delivery service.</p>
+
+          <div class="method-head">
+            <div>Select Method</div>
+            <div>Price</div>
+            <div>Method Title</div>
+            <div>Carrier Title</div>
+          </div>
+          <div class="method-row">
+            <div class="m-sel"><input type="radio" name="ship" checked></div>
+            <div class="m-price">&pound;0.00</div>
+            <div class="m-title">Free Delivery</div>
+            <div class="m-carrier">Select Shipping Method</div>
+          </div>
+          <div class="method-row">
+            <div class="m-sel"><input type="radio" name="ship"></div>
+            <div class="m-price">&pound;25.00</div>
+            <div class="m-title">Afternoon Delivery</div>
+            <div class="m-carrier">Select Shipping Method</div>
+          </div>
+          <div class="method-row">
+            <div class="m-sel"><input type="radio" name="ship"></div>
+            <div class="m-price">&pound;25.00</div>
+            <div class="m-title">Morning Delivery</div>
+            <div class="m-carrier">Select Shipping Method</div>
+          </div>
+          <div class="method-row">
+            <div class="m-sel"><input type="radio" name="ship"></div>
+            <div class="m-price">&pound;50.00</div>
+            <div class="m-title">Saturday Delivery</div>
+            <div class="m-carrier">Select Shipping Method</div>
+          </div>
+
+          <a class="co-next" href="checkout-payment.html">Next
+            <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </section>
+
+      </div>
+
+      <!-- RIGHT: order summary -->
+      <aside class="co-summary">
+        <div class="sum-item">
+          <div class="sum-thumb">
+            <img src="https://www.bradstone.com/media/catalog/product/s/t/stonefleck_infilta_2.jpg?quality=80&bg-color=255,255,255&fit=bounds&width=200&height=200&canvas=200:200" alt="Andover Infilta">
+          </div>
+          <div class="sum-info">
+            <div class="sum-top">
+              <div class="sum-name">ANDOVER&reg; INFILTA</div>
+              <div class="sum-price">&pound;0.00</div>
+            </div>
+            <p class="sum-qty">QTY <span>1</span></p>
+            <button class="view-details" type="button" aria-expanded="false">View Details
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="sum-details">
+              <p class="sum-attr"><b>Colour:</b> Anthracite Charcoal</p>
+              <p class="sum-attr"><b>Type:</b> Sample</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ============ MINIMAL FOOTER ============ -->
+  <footer class="co-foot">
+    ©2026 - Holcim UK Limited | Bradstone
+    <span style="margin:0 6px;">·</span>
+    <a href="#">Terms &amp; Conditions</a>
+    <a href="#">Privacy Policy</a>
+  </footer>
+  <script>
+    // Toggle the order-summary "View Details" panel
+    document.querySelectorAll('.view-details').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var panel = btn.parentElement.querySelector('.sum-details');
+        if (!panel) return;
+        var isOpen = panel.classList.toggle('show');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+  <\/script>
+
+</body>
+</html>
+</script>
+<script type="text/html" id="p:checkout-payment"><!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout – Payment – Bradstone Commercial</title>
+
+<!-- Bradstone's real Adobe Typekit kit: ivypresto-display (serif headings) + halyard-text (sans body/UI) -->
+<link rel="stylesheet" href="https://use.typekit.net/kjz6hbv.css">
+
+<style>
+  :root{
+    --charcoal:#524D56;
+    --green:#005209;
+    --dark:#29272B;
+    --border:#D4D3D5;
+    --line:#E6E5E7;
+    --white:#ffffff;
+    --sans:"halyard-text",-apple-system,"Segoe UI",Arial,sans-serif;
+    --serif:"ivypresto-display",Georgia,"Times New Roman",serif;
+    --maxw:1776px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:var(--sans);font-size:16px;line-height:24px;color:var(--charcoal);background:var(--white);}
+  a{color:var(--charcoal);text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 12px;}
+
+  /* ===================== MINIMAL CHECKOUT HEADER ===================== */
+  .co-header{border-bottom:1px solid var(--line);padding:26px 0;}
+  .co-header .wrap{display:flex;justify-content:center;}
+  .co-logo img{height:30px;width:auto;}
+
+  /* ===================== CHECKOUT ===================== */
+  .co{padding-top:40px;padding-bottom:80px;}
+  .co-title{font-family:var(--serif);font-weight:400;font-size:36px;line-height:1.1;color:var(--charcoal);margin:8px 0 26px;}
+
+  /* step indicator */
+  .steps{display:flex;align-items:flex-start;margin:0 0 40px;}
+  .step{display:flex;flex-direction:column;align-items:center;gap:9px;width:72px;}
+  .step .circle{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;background:#fff;border:1px solid #bcb9c0;color:var(--charcoal);}
+  .step.active .circle{background:var(--dark);border-color:var(--dark);color:#fff;}
+  .step .label{font-size:14px;color:var(--charcoal);}
+  .step-line{flex:0 0 64px;height:1px;background:var(--charcoal);margin-top:17px;}
+
+  .co-body{display:flex;align-items:flex-start;gap:24px;}
+  .co-left{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:24px;}
+  .co-card{border:1px solid var(--border);border-radius:20px;background:#fff;padding:44px 56px;}
+  .co-head{font-family:var(--serif);font-weight:300;font-size:24px;line-height:1.1;color:var(--charcoal);margin:0 0 24px;}
+
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:16px;font-weight:600;color:var(--charcoal);margin-bottom:8px;}
+  .field label .req{color:#e02b2b;}
+  .input-wrap{position:relative;}
+  .field input{width:100%;background:#fff;border:1px solid var(--border);border-radius:80px;padding:12px 24px;height:48px;font-family:var(--sans);font-size:16px;color:var(--charcoal);outline:none;}
+  .field input:focus{border-color:var(--green);}
+  .info-i{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:1.5;pointer-events:none;}
+
+  /* ---- payment options ---- */
+  .pay-opt{border:1px solid var(--border);border-radius:8px;padding:22px 24px;margin-bottom:16px;}
+  .pay-opt-head{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--charcoal);cursor:pointer;}
+  .pay-opt-head input[type=radio]{width:20px;height:20px;accent-color:var(--green);flex:none;cursor:pointer;}
+  .pay-opt-head .pp-badge{display:inline-flex;align-items:center;justify-content:center;height:30px;padding:0 9px;border:1px solid #e3e2e5;border-radius:5px;background:#fff;}
+  .pay-opt-head .pp-logo{height:16px;width:auto;display:block;}
+  .pay-body{margin-top:22px;}
+  .bill-check{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-size:16px;color:var(--charcoal);cursor:pointer;}
+  .bill-check input{width:20px;height:20px;accent-color:var(--green);flex:none;cursor:pointer;}
+  .bill-addr{font-size:16px;line-height:24px;color:var(--charcoal);margin:0 0 24px;}
+  .card-input-wrap{position:relative;}
+  .card-input-wrap .card-ico{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:32px;height:22px;border-radius:3px;background:#d8d7da;}
+  .card-input-wrap input{padding-left:62px;}
+  .card-icons{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 22px;}
+  .card-badge{height:26px;min-width:40px;padding:0 8px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #e3e2e5;border-radius:5px;background:#f7f7f8;font-size:10px;font-weight:700;color:#9a969d;letter-spacing:.04em;}
+  .place-order{display:inline-flex;align-items:center;gap:12px;background:var(--green);color:#fff;border:0;border-radius:80px;padding:15px 30px;font-family:var(--sans);font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;cursor:pointer;margin-top:26px;transition:background-color .18s;}
+  .place-order:hover{background:#00400a;}
+  .place-order svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex:none;}
+  .discount-acc{display:flex;align-items:center;gap:8px;background:none;border:0;padding:8px 0;font-family:var(--sans);font-size:16px;font-weight:500;text-transform:uppercase;color:var(--charcoal);cursor:pointer;}
+  .discount-acc svg{width:14px;height:14px;stroke:var(--charcoal);fill:none;stroke-width:2;}
+
+  /* ---- right column ---- */
+  .right-col{flex:0 0 620px;max-width:620px;display:flex;flex-direction:column;gap:24px;}
+  .co-summary{border:1px solid var(--border);border-radius:20px;background:#fff;padding:28px 30px;}
+  .sum-item{display:flex;gap:22px;align-items:flex-start;}
+  .sum-thumb{flex:none;width:88px;height:88px;border-radius:8px;overflow:hidden;background:#efeef0;}
+  .sum-thumb img{width:100%;height:100%;object-fit:cover;}
+  .sum-info{flex:1;min-width:0;}
+  .sum-top{display:flex;justify-content:space-between;gap:16px;}
+  .sum-name{font-size:16px;font-weight:700;text-transform:uppercase;color:var(--charcoal);line-height:1.3;}
+  .sum-price{font-size:16px;color:var(--charcoal);white-space:nowrap;}
+  .sum-qty{font-size:14px;font-weight:700;text-transform:uppercase;color:var(--charcoal);margin:12px 0 0;}
+  .sum-qty span{font-weight:400;}
+  .view-details{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;font-family:var(--sans);color:var(--green);font-size:16px;font-weight:500;margin-top:16px;cursor:pointer;}
+  .view-details svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s ease;}
+  .view-details[aria-expanded="true"] svg{transform:rotate(180deg);}
+  .sum-details{display:none;margin-top:4px;}
+  .sum-details.show{display:block;}
+  .sum-details .sum-attr{font-size:15px;color:var(--charcoal);margin:8px 0 0;}
+
+  .os{margin-top:26px;padding-top:8px;}
+  .os-head{font-family:var(--serif);font-weight:300;font-size:24px;color:var(--charcoal);margin:0 0 12px;}
+  .os-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0;font-size:16px;color:var(--charcoal);border-bottom:1px solid #ececed;}
+  .os-row .val{color:var(--green);white-space:nowrap;}
+  .os-row .os-label b{font-weight:700;}
+  .os-row .os-sub{color:var(--charcoal);}
+  .os-row.total{border-bottom:0;padding-top:16px;font-weight:700;}
+  .os-row.total .os-label,.os-row.total .val{color:var(--green);text-transform:uppercase;font-size:18px;}
+  /* reward points */
+  .rp{margin-top:24px;padding:20px 22px;border:1px solid var(--border);border-radius:12px;background:#F7FAF4;}
+  .rp-head{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:300;font-size:20px;color:var(--charcoal);margin-bottom:8px;}
+  .rp-head svg{width:22px;height:22px;fill:var(--green);}
+  .rp-bal{font-size:15px;color:var(--charcoal);margin:0 0 14px;}
+  .rp-bal b{font-weight:700;}
+  .rp-worth{color:var(--green);font-weight:600;}
+  .rp-apply{display:flex;gap:10px;}
+  .rp-apply input{flex:1;min-width:0;background:#fff;border:1px solid var(--border);border-radius:80px;padding:11px 18px;height:44px;font-family:var(--sans);font-size:15px;color:var(--charcoal);outline:none;}
+  .rp-apply input:focus{border-color:var(--green);}
+  .rp-apply button{flex:none;background:var(--green);color:#fff;border:0;border-radius:80px;padding:0 22px;font-family:var(--sans);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;cursor:pointer;}
+  .rp-apply button:hover{background:#00400a;}
+  .rp-max{background:none;border:0;padding:10px 0 0;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--green);cursor:pointer;text-decoration:underline;}
+  .rp-done{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:15px;color:var(--charcoal);}
+  .rp-done b{font-weight:700;}
+  .rp-remove{background:none;border:0;padding:0;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--charcoal);text-decoration:underline;cursor:pointer;}
+  .rp-remove:hover{color:var(--green);}
+  .reward-row .val{color:var(--green);}
+  .rp-done[hidden]{display:none;}
+  .reward-row[hidden]{display:none;}
+
+  .info-card{border:1px solid var(--border);border-radius:20px;background:#fff;padding:28px 30px;}
+  .info-block+.info-block{margin-top:24px;}
+  .info-hd{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid #e3e2e5;margin-bottom:14px;}
+  .info-hd h3{font-family:var(--serif);font-weight:300;font-size:24px;color:var(--charcoal);margin:0;}
+  .edit-ico{background:none;border:0;padding:4px;cursor:pointer;color:var(--charcoal);}
+  .edit-ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;}
+  .info-addr{font-size:16px;line-height:24px;color:var(--charcoal);}
+
+  /* minimal footer */
+  .co-foot{border-top:1px solid var(--line);padding:22px 0;text-align:center;font-size:14px;color:#8a868f;}
+  .co-foot a{color:#8a868f;margin:0 12px;}
+  .co-foot a:hover{text-decoration:underline;}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:980px){
+    .co-body{flex-direction:column;gap:24px;}
+    .right-col{flex-basis:auto;max-width:none;width:100%;order:-1;}
+    .co-card{padding:32px 28px;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px;}
+    .co-card{padding:26px 20px;}
+    .pay-opt{padding:18px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ MINIMAL HEADER ============ -->
+  <header class="co-header">
+    <div class="wrap">
+      <a class="co-logo" href="andover-infilta.html" aria-label="Bradstone">
+        <img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone">
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ CHECKOUT ============ -->
+  <main class="wrap co">
+    <h1 class="co-title">Checkout</h1>
+
+    <div class="steps">
+      <div class="step">
+        <div class="circle">1</div>
+        <div class="label">Delivery</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step active">
+        <div class="circle">2</div>
+        <div class="label">Payment</div>
+      </div>
+    </div>
+
+    <div class="co-body">
+
+      <!-- LEFT: payment -->
+      <div class="co-left">
+        <section class="co-card">
+          <h2 class="co-head">Payment Method</h2>
+
+          <!-- Credit Card -->
+          <div class="pay-opt">
+            <label class="pay-opt-head">
+              <input type="radio" name="pay" checked>
+              <span>Credit Card</span>
+            </label>
+
+            <div class="pay-body">
+              <label class="bill-check">
+                <input type="checkbox" checked>
+                <span>My billing and delivery address are the same</span>
+              </label>
+
+              <p class="bill-addr">
+                Jane Smith<br>
+                24 Meadow Lane<br>
+                Ashbourne, DE6 1AA<br>
+                United Kingdom<br>
+                01335 372222
+              </p>
+
+              <div class="field">
+                <label>Credit Card Number <span class="req">*</span></label>
+                <div class="input-wrap card-input-wrap">
+                  <span class="card-ico"></span>
+                  <input type="text" inputmode="numeric" placeholder="4111 1111 1111 1111">
+                </div>
+                <div class="card-icons">
+                  <span class="card-badge">AMEX</span>
+                  <span class="card-badge">VISA</span>
+                  <span class="card-badge">MC</span>
+                  <span class="card-badge">DISC</span>
+                  <span class="card-badge">JCB</span>
+                  <span class="card-badge">DINERS</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Expiration Date <span class="req">*</span></label>
+                <input type="text" placeholder="MM/YYYY">
+              </div>
+
+              <div class="field">
+                <label>Card Verification Number <span class="req">*</span></label>
+                <div class="input-wrap">
+                  <input type="text" inputmode="numeric" placeholder="123">
+                  <svg class="info-i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16.5" stroke-linecap="round"/><circle cx="12" cy="8" r="1" fill="var(--green)" stroke="none"/></svg>
+                </div>
+              </div>
+
+              <a class="place-order" href="order-success.html">Place Order
+                <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- PayPal -->
+          <div class="pay-opt">
+            <label class="pay-opt-head">
+              <input type="radio" name="pay">
+              <span class="pp-badge">
+                <svg class="pp-logo" viewBox="0 0 82 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PayPal">
+                  <text x="1" y="15.5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" font-style="italic" fill="#003087">Pay</text>
+                  <text x="34" y="15.5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" font-style="italic" fill="#0079C1">Pal</text>
+                </svg>
+              </span>
+              <span>PayPal</span>
+            </label>
+          </div>
+
+          <button class="discount-acc" type="button">
+            Apply Discount Code
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </section>
+      </div>
+
+      <!-- RIGHT: summary + delivery info -->
+      <div class="right-col">
+
+        <aside class="co-summary">
+          <div class="sum-item">
+            <div class="sum-thumb">
+              <img src="https://www.bradstone.com/media/catalog/product/s/t/stonefleck_infilta_2.jpg?quality=80&bg-color=255,255,255&fit=bounds&width=200&height=200&canvas=200:200" alt="Andover Infilta">
+            </div>
+            <div class="sum-info">
+              <div class="sum-top">
+                <div class="sum-name">ANDOVER&reg; INFILTA</div>
+                <div class="sum-price">&pound;0.00</div>
+              </div>
+              <p class="sum-qty">QTY <span>1</span></p>
+              <button class="view-details" type="button" aria-expanded="false">View Details
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="sum-details">
+                <p class="sum-attr"><b>Colour:</b> Anthracite Charcoal</p>
+                <p class="sum-attr"><b>Type:</b> Sample</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rp">
+            <div class="rp-head">
+              <svg viewBox="0 0 24 24"><path d="M12 2.6l2.7 5.9 6.5.6-4.9 4.3 1.5 6.3L12 16.9 6.7 19.7l1.5-6.3L3.3 9.1l6.5-.6z"/></svg>
+              <span>Reward Points</span>
+            </div>
+            <p class="rp-bal">You have <b id="rp-balance">500</b> points <span class="rp-worth">(&pound;5.00)</span></p>
+            <div class="rp-apply" id="rp-controls">
+              <input type="number" id="rp-input" min="0" step="1" placeholder="Points to use">
+              <button type="button" id="rp-apply-btn">Apply</button>
+            </div>
+            <button type="button" class="rp-max" id="rp-max">Use maximum (495 pts)</button>
+            <div class="rp-done" id="rp-done" hidden>
+              <span><b id="rp-used">0</b> points applied · <b id="rp-saved">−&pound;0.00</b></span>
+              <button type="button" class="rp-remove" id="rp-remove">Remove</button>
+            </div>
+          </div>
+
+          <div class="os">
+            <h3 class="os-head">Order Summary</h3>
+            <div class="os-row">
+              <span class="os-label">Subtotal</span>
+              <span class="val">&pound;0.00</span>
+            </div>
+            <div class="os-row">
+              <span class="os-label"><b>Delivery</b> <span class="os-sub">Standard Delivery</span></span>
+              <span class="val">&pound;4.95</span>
+            </div>
+            <div class="os-row">
+              <span class="os-label">VAT</span>
+              <span class="val">&pound;0.00</span>
+            </div>
+            <div class="os-row reward-row" id="rp-row" hidden>
+              <span class="os-label"><b>Reward Points</b> <span class="os-sub" id="rp-row-pts"></span></span>
+              <span class="val" id="rp-row-val">−&pound;0.00</span>
+            </div>
+            <div class="os-row total">
+              <span class="os-label">Order Total</span>
+              <span class="val" id="rp-total">&pound;4.95</span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="info-card">
+          <div class="info-block">
+            <div class="info-hd">
+              <h3>Deliver To</h3>
+              <button class="edit-ico" type="button" aria-label="Edit delivery address">
+                <svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4z" stroke-linejoin="round"/><path d="M14.5 5.5l4 4" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <p class="info-addr">
+              Jane Smith<br>
+              24 Meadow Lane<br>
+              Ashbourne, DE6 1AA<br>
+              United Kingdom<br>
+              01335 372222
+            </p>
+          </div>
+
+          <div class="info-block">
+            <div class="info-hd">
+              <h3>Delivery Method:</h3>
+              <button class="edit-ico" type="button" aria-label="Edit delivery method">
+                <svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4z" stroke-linejoin="round"/><path d="M14.5 5.5l4 4" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <p class="info-addr">Select Shipping Method - Free Delivery</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============ MINIMAL FOOTER ============ -->
+  <footer class="co-foot">
+    ©2026 - Holcim UK Limited | Bradstone
+    <span style="margin:0 6px;">·</span>
+    <a href="#">Terms &amp; Conditions</a>
+    <a href="#">Privacy Policy</a>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.view-details').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var panel = btn.parentElement.querySelector('.sum-details');
+        if (!panel) return;
+        var isOpen = panel.classList.toggle('show');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+  <\/script>
+
+  <script>
+  (function(){
+    var BAL=500, RATE=0.01, BASE=4.95;
+    var MAXPTS=Math.min(BAL, Math.round(BASE/RATE));
+    var applied=0;
+    function id(x){return document.getElementById(x);}
+    function m(n){return "\u00a3"+n.toFixed(2);}
+    function render(){
+      var saved=applied*RATE, total=Math.max(0,BASE-saved), worth=document.querySelector(".rp-worth");
+      id("rp-total").textContent=m(total);
+      if(applied>0){
+        id("rp-row").hidden=false;
+        id("rp-row-pts").textContent="("+applied+" pts)";
+        id("rp-row-val").textContent="\u2212"+m(saved);
+        id("rp-controls").style.display="none"; id("rp-max").style.display="none";
+        id("rp-done").hidden=false; id("rp-used").textContent=applied; id("rp-saved").textContent="\u2212"+m(saved);
+        id("rp-balance").textContent=(BAL-applied); if(worth)worth.textContent="("+m((BAL-applied)*RATE)+")";
+      }else{
+        id("rp-row").hidden=true; id("rp-controls").style.display=""; id("rp-max").style.display="";
+        id("rp-done").hidden=true; id("rp-balance").textContent=BAL; if(worth)worth.textContent="("+m(BAL*RATE)+")";
+      }
+    }
+    function apply(p){p=parseInt(p,10);if(isNaN(p)||p<0)p=0;if(p>MAXPTS)p=MAXPTS;applied=p;render();}
+    var ab=id("rp-apply-btn");if(ab)ab.addEventListener("click",function(){apply(id("rp-input").value);});
+    var mx=id("rp-max");if(mx)mx.addEventListener("click",function(){id("rp-input").value=MAXPTS;apply(MAXPTS);});
+    var rm=id("rp-remove");if(rm)rm.addEventListener("click",function(){id("rp-input").value="";applied=0;render();});
+    render();
+  })();
+  <\/script>
+</body>
+</html>
+</script>
+<script type="text/html" id="p:order-success"><!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed – Bradstone Commercial</title>
+
+<!-- Bradstone's real Adobe Typekit kit: ivypresto-display (serif headings) + halyard-text (sans body/UI) -->
+<link rel="stylesheet" href="https://use.typekit.net/kjz6hbv.css">
+
+<style>
+  :root{
+    --charcoal:#524D56;
+    --green:#005209;
+    --dark:#29272B;
+    --border:#D4D3D5;
+    --line:#E6E5E7;
+    --white:#ffffff;
+    --sans:"halyard-text",-apple-system,"Segoe UI",Arial,sans-serif;
+    --serif:"ivypresto-display",Georgia,"Times New Roman",serif;
+    --maxw:1776px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:var(--sans);font-size:16px;line-height:24px;color:var(--charcoal);background:var(--white);}
+  a{color:var(--charcoal);text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 12px;}
+
+  /* ===================== MINIMAL CHECKOUT HEADER ===================== */
+  .co-header{border-bottom:1px solid var(--line);padding:26px 0;}
+  .co-header .wrap{display:flex;justify-content:center;}
+  .co-logo img{height:30px;width:auto;}
+
+  /* ===================== SUCCESS ===================== */
+  .success{padding:80px 0 90px;}
+  .success-inner{max-width:640px;margin:0 auto;text-align:center;}
+  .success-icon{width:92px;height:92px;margin:0 auto 30px;border-radius:50%;background:rgba(0,82,9,.08);display:flex;align-items:center;justify-content:center;}
+  .success-icon svg{width:46px;height:46px;stroke:var(--green);fill:none;stroke-width:2.4;}
+  .success-title{font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.1;color:var(--charcoal);margin:0 0 20px;}
+  .success-title .g{color:var(--green);font-weight:700;}
+  .success-lead{font-size:18px;line-height:28px;color:var(--charcoal);margin:0 auto 20px;max-width:560px;}
+  .order-ref{display:inline-block;font-size:16px;color:var(--charcoal);background:#F4F4F5;border-radius:80px;padding:10px 22px;margin-bottom:8px;}
+  .order-ref b{font-weight:700;}
+  .success-note{font-size:16px;line-height:24px;color:#7a767e;margin:18px auto 34px;max-width:520px;}
+  .success-note a{color:var(--green);font-weight:600;}
+
+  /* order details card */
+  .order-card{border:1px solid var(--border);border-radius:16px;background:#fff;padding:26px 28px;text-align:left;max-width:520px;margin:0 auto 38px;}
+  .oc-item{display:flex;gap:18px;align-items:flex-start;padding-bottom:20px;border-bottom:1px solid #ececed;}
+  .oc-thumb{flex:none;width:76px;height:76px;border-radius:8px;overflow:hidden;background:#efeef0;}
+  .oc-thumb img{width:100%;height:100%;object-fit:cover;}
+  .oc-info{flex:1;min-width:0;}
+  .oc-name{font-size:15px;font-weight:700;text-transform:uppercase;color:var(--charcoal);line-height:1.3;}
+  .oc-attr{font-size:14px;color:var(--charcoal);margin:6px 0 0;}
+  .oc-qty{font-size:13px;font-weight:700;text-transform:uppercase;color:var(--charcoal);margin:8px 0 0;}
+  .oc-qty span{font-weight:400;}
+  .oc-rows{padding-top:18px;}
+  .oc-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:8px 0;font-size:15px;color:var(--charcoal);}
+  .oc-row .val{color:var(--green);white-space:nowrap;}
+  .oc-row.total{border-top:1px solid #ececed;margin-top:8px;padding-top:14px;font-weight:700;}
+  .oc-row.total .lbl,.oc-row.total .val{color:var(--green);text-transform:uppercase;}
+
+  .success-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary,.btn-outline{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:16px;font-weight:500;line-height:1;padding:16px 32px;border-radius:80px;border:1.5px solid var(--green);cursor:pointer;text-decoration:none;transition:background-color .18s ease,color .18s ease;}
+  .btn-primary{background:var(--green);color:#fff;gap:10px;}
+  .btn-primary:hover{background:#00400a;border-color:#00400a;}
+  .btn-primary svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex:none;}
+  .btn-outline{background:transparent;color:var(--green);}
+  .btn-outline:hover{background:var(--green);color:#fff;}
+
+  /* minimal footer */
+  .co-foot{border-top:1px solid var(--line);padding:22px 0;text-align:center;font-size:14px;color:#8a868f;}
+  .co-foot a{color:#8a868f;margin:0 12px;}
+  .co-foot a:hover{text-decoration:underline;}
+
+  @media (max-width:600px){
+    .wrap{padding:0 16px;}
+    .success{padding:56px 0 64px;}
+    .success-title{font-size:34px;}
+    .success-lead{font-size:16px;line-height:24px;}
+    .order-card{padding:20px;}
+    .success-actions{flex-direction:column;}
+    .btn-primary,.btn-outline{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ MINIMAL HEADER ============ -->
+  <header class="co-header">
+    <div class="wrap">
+      <a class="co-logo" href="andover-infilta.html" aria-label="Bradstone">
+        <img src="https://www.bradstone.com/static/version1788929388/frontend/bradstone/bradstone-commercial/en_GB/images/logo.svg" alt="Bradstone">
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ ORDER SUCCESS ============ -->
+  <main class="wrap success">
+    <div class="success-inner">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <h1 class="success-title">Thank You for Your <span class="g">Purchase!</span></h1>
+      <p class="success-lead">Your Order is Confirmed</p>
+
+      <p class="success-note">We will email you an order confirmation with details and tracking information.</p>
+
+      <div class="success-actions">
+        <a class="btn-primary" href="#">Continue Shopping
+          <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ MINIMAL FOOTER ============ -->
+  <footer class="co-foot">
+    ©2026 - Holcim UK Limited | Bradstone
+    <span style="margin:0 6px;">·</span>
+    <a href="#">Terms &amp; Conditions</a>
+    <a href="#">Privacy Policy</a>
+  </footer>
+
+</body>
+</html>
+</script>
+
+<script>
+(function(){
+  var PAGES={};
+  document.querySelectorAll('script[type="text/html"]').forEach(function(s){
+    PAGES[s.id.slice(2)] = s.textContent.replace(/<\\\/script/g,'<\/script');
+  });
+  var NAMES=Object.keys(PAGES);var HOME='andover-infilta';var stage=document.getElementById('stage');var current=null;
+  function process(html){
+    NAMES.forEach(function(n){
+      html=html.split('href="'+n+'.html"').join('href="#" data-nav="'+n+'"');
+      html=html.split("window.location.href = '"+n+".html'").join("window.parent.postMessage({__nav:'"+n+"'},'*')");
+    });
+    var body='(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a)return;var nav=a.getAttribute("data-nav");if(nav){e.preventDefault();parent.postMessage({__nav:nav},"*");return;}if(a.getAttribute("href")==="#"){e.preventDefault();}});})();';
+    var helper='<scr'+'ipt>'+body+'</scr'+'ipt>';
+    if(html.indexOf('</body>')>-1){html=html.replace('</body>',helper+'</body>');}else{html+=helper;}
+    return html;
+  }
+  function show(name){if(!PAGES[name])name=HOME;current=name;stage.srcdoc=process(PAGES[name]);if(location.hash.slice(1)!==name){location.hash=name;}}
+  window.addEventListener('message',function(e){if(e.data&&e.data.__nav){show(e.data.__nav);}});
+  window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h!==current){show(h);}});
+  show(location.hash.slice(1)||HOME);
+})();
+</script>
+
+</body>
+</html>
