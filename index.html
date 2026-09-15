@@ -2225,18 +2225,29 @@
   document.querySelectorAll('script[type="text/html"]').forEach(function(s){
     PAGES[s.id.slice(2)] = s.textContent.replace(/<\\\/script/g,'<\/script');
   });
-  var NAMES=Object.keys(PAGES);var HOME='andover-infilta';var stage=document.getElementById('stage');var current=null;
+  var NAMES=Object.keys(PAGES);
+  var HOME='andover-infilta';
+  var stage=document.getElementById('stage');
+  var current=null;
+
+  var STYLE='<style>@keyframes __hsf{0%{box-shadow:0 0 0 2px rgba(30,120,255,.95),0 0 0 6px rgba(30,120,255,.30)}100%{box-shadow:0 0 0 2px rgba(30,120,255,0),0 0 0 16px rgba(30,120,255,0)}}.__hson{animation:__hsf 1s ease-out;}</style>';
+  var HELPER_BODY='(function(){var t;function fl(){var h=document.querySelectorAll("a[data-nav],button");if(!h.length)return;var i;for(i=0;i<h.length;i++)h[i].classList.remove("__hson");void document.body.offsetWidth;for(i=0;i<h.length;i++)h[i].classList.add("__hson");clearTimeout(t);t=setTimeout(function(){var e=document.querySelectorAll(".__hson"),k;for(k=0;k<e.length;k++)e[k].classList.remove("__hson");},1100);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(a){var nav=a.getAttribute("data-nav");if(nav){e.preventDefault();parent.postMessage({__nav:nav},"*");fl();return;}if(a.getAttribute("href")==="#"){e.preventDefault();}}fl();});})();';
+
   function process(html){
     NAMES.forEach(function(n){
       html=html.split('href="'+n+'.html"').join('href="#" data-nav="'+n+'"');
       html=html.split("window.location.href = '"+n+".html'").join("window.parent.postMessage({__nav:'"+n+"'},'*')");
     });
-    var body='(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a)return;var nav=a.getAttribute("data-nav");if(nav){e.preventDefault();parent.postMessage({__nav:nav},"*");return;}if(a.getAttribute("href")==="#"){e.preventDefault();}});})();';
-    var helper='<scr'+'ipt>'+body+'</scr'+'ipt>';
+    var helper=STYLE+'<scr'+'ipt>'+HELPER_BODY+'</scr'+'ipt>';
     if(html.indexOf('</body>')>-1){html=html.replace('</body>',helper+'</body>');}else{html+=helper;}
     return html;
   }
-  function show(name){if(!PAGES[name])name=HOME;current=name;stage.srcdoc=process(PAGES[name]);if(location.hash.slice(1)!==name){location.hash=name;}}
+  function show(name){
+    if(!PAGES[name]) name=HOME;
+    current=name;
+    stage.srcdoc=process(PAGES[name]);
+    if(location.hash.slice(1)!==name){location.hash=name;}
+  }
   window.addEventListener('message',function(e){if(e.data&&e.data.__nav){show(e.data.__nav);}});
   window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h!==current){show(h);}});
   show(location.hash.slice(1)||HOME);
